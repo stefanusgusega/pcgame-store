@@ -1,5 +1,3 @@
-# database.py
-
 import datetime
 
 

@@ -5,6 +5,11 @@ Application system about purchasing PC Game
 ## Prerequisite
 Python 3.7
 
+## How to run
+```
+python main.py
+```
+
 ## Contributors
 - Inka Anindya Riyadi - 13518038
 - Fritz Gerald - 13518065
