@@ -5,6 +5,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from backend import Database
+from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE
 
 
 class RegisterUserWindow(Screen):
@@ -17,13 +18,13 @@ class RegisterUserWindow(Screen):
             db.add_user(self.email.text, self.password.text, self.full_name.text)
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main"
+            program.current = MAIN_PAGE
         else:
             invalidForm()
 
     def login(self):
         self.reset()
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def reset(self):
         self.email.text = ""
@@ -39,13 +40,13 @@ class LoginUserWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main"
+            program.current = MAIN_PAGE
         else:
             invalidLogin()
 
     def register(self):
         self.reset()
-        program.current = "register"
+        program.current = REGISTER_PAGE
 
     def reset(self):
         self.email.text = ""
@@ -59,7 +60,7 @@ class MainWindow(Screen):
     current = ""
 
     def logout(self):
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def on_enter(self, *args):
         password, full_name, created = db.get_user(self.current)
@@ -88,14 +89,14 @@ def invalidForm():
 
 
 kv = Builder.load_file("my.kv")
-program = WindowManager()
 db = Database("users.txt")
+program = WindowManager()
 
-screens = [LoginUserWindow(name="login"), RegisterUserWindow(name="register"), MainWindow(name="main")]
+screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), MainWindow(name=MAIN_PAGE)]
 for screen in screens:
     program.add_widget(screen)
 
-program.current = "login"
+program.current = LOGIN_PAGE
 
 
 class MyMainApp(App):

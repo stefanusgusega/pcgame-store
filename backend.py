@@ -29,7 +29,7 @@ class Database:
             self.save()
             return 1
         else:
-            print("Email exists already")
+            print("Email already exists")
             return -1
 
     def validate(self, email, password):
