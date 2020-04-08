@@ -1,3 +1,5 @@
+# main.py
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -5,7 +7,6 @@ from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from backend import Database
-from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE
 
 
 class RegisterUserWindow(Screen):
@@ -18,13 +19,13 @@ class RegisterUserWindow(Screen):
             db.add_user(self.email.text, self.password.text, self.full_name.text)
             MainWindow.current = self.email.text
             self.reset()
-            program.current = MAIN_PAGE
+            program.current = "main"
         else:
             invalidForm()
 
     def login(self):
         self.reset()
-        program.current = LOGIN_PAGE
+        program.current = "login"
 
     def reset(self):
         self.email.text = ""
@@ -40,17 +41,47 @@ class LoginUserWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            program.current = MAIN_PAGE
+            program.current = "main"
         else:
-            invalidLogin()
+            invalidPurchase()
 
     def register(self):
         self.reset()
-        program.current = REGISTER_PAGE
+        program.current = "register"
 
     def reset(self):
         self.email.text = ""
         self.password.text = ""
+
+class PurchaseWindow(Screen):
+
+    saldo = ObjectProperty(None)
+    harga = ObjectProperty(None)
+    def on_enter(self, *args):
+        self.balance.text = "80.000"
+        self.price.text = "100.000"
+
+    def purchase(self):
+        harga = 80
+        saldo = 100
+        
+        if(saldo<harga):
+            invalidPurchase()
+            program.current = "purchase"
+        else:
+            self.reset()
+            program.current = "download"
+        
+    def reset(self):
+        self.balance.text = ""
+        self.price.text = ""
+
+class DownloadWindow(Screen):
+    def download(self):
+        pop = Popup(title='Download game',
+                  content=Label(text='ini linknya'),
+                  size_hint=(None, None), size=(500, 200))
+        pop.open()
 
 
 class MainWindow(Screen):
@@ -60,7 +91,7 @@ class MainWindow(Screen):
     current = ""
 
     def logout(self):
-        program.current = LOGIN_PAGE
+        program.current = "login"
 
     def on_enter(self, *args):
         password, full_name, created = db.get_user(self.current)
@@ -87,16 +118,21 @@ def invalidForm():
 
     pop.open()
 
+def invalidPurchase():
+    pop = Popup(title='Invalid Purchase', 
+                    content = Label(text='Balance not enough to purchase game. \nPlease top up first'),
+                    size_hint = (None,None), size = (600,200))
+    pop.open()
 
 kv = Builder.load_file("my.kv")
-db = Database("users.txt")
 program = WindowManager()
+db = Database("users.txt")
 
-screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), MainWindow(name=MAIN_PAGE)]
+screens = [LoginUserWindow(name="login"), RegisterUserWindow(name="register"), MainWindow(name="main"), PurchaseWindow(name="purchase"),DownloadWindow(name="download")]
 for screen in screens:
     program.add_widget(screen)
 
-program.current = LOGIN_PAGE
+program.current = "login"
 
 
 class MyMainApp(App):
