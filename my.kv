@@ -1,6 +1,5 @@
 <FirstWindow>:
     name: "first"
-
     FloatLayout:
 
         Image:
@@ -39,70 +38,144 @@
             on_release:
                 root.manager.transition.direction = "left"
                 app.root.current = "register"
-                
+              
 <RegisterUserWindow>:
     name: "register"
     full_name: full_name
     email: email
     password: password
+    dateofbirth: dateofbirth
+    nationality: nationality
+    phonenumber: phonenumber
 
     FloatLayout:
         cols:1
+        Image:
+            source: 'logo.png'
+            size: self.texture_size
+            size_hint: 0.3,0.3
+            pos_hint: {"x":0.05, "top":1}
+
+        Label:
+            text: "REGISTER"
+            size_hint: 0.8, None
+            pos_hint: {"x":0.1, "top":0.78}
+            font_size: (root.width**2 + root.height**2) / 14**4
 
         FloatLayout:
             size: root.width, root.height/2
 
-            Label:
-                text: "Create an Account"
-                size_hint: 0.8, 0.2
-                pos_hint: {"x":0.1, "top":1}
-                font_size: (root.width**2 + root.height**2) / 14**4
+            # Label:
+            #     text: "Create an Account"
+            #     size_hint: 0.8, 0.2
+            #     pos_hint: {"x":0.1, "top":1}
+            #     font_size: (root.width**2 + root.height**2) / 14**4
 
             Label:
-                size_hint: 0.5,0.12
-                pos_hint: {"x":0, "top":0.8}
+                size_hint: 0.38,None
+                text_size: self.size
+                valign: "middle"
+                halign: "right"
+                pos_hint: {"x":0, "top":0.67}
                 text: "Full name: "
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
-                pos_hint: {"x":0.5, "top":0.8}
-                size_hint: 0.4, 0.12
+                pos_hint: {"x":0.4, "top":0.65}
+                size_hint: 0.4, 0.05
                 id: full_name
                 multiline: False
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 18**4
 
             Label:
-                size_hint: 0.5,0.12
-                pos_hint: {"x":0, "top":0.8-0.13}
+                size_hint: 0.38,None
+                text_size: self.size
+                valign: "middle"
+                halign: "right"
+                pos_hint: {"x":0, "top":0.65-0.04}
                 text: "Email: "
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
-                pos_hint: {"x":0.5, "top":0.8-0.13}
-                size_hint: 0.4, 0.12
+                pos_hint: {"x":0.4, "top":0.65-0.06}
+                size_hint: 0.4, 0.05
                 id: email
                 email: True
                 multiline: False
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 18**4
 
             Label:
-                size_hint: 0.5,0.12
-                pos_hint: {"x":0, "top":0.8-0.13*2}
+                size_hint: 0.38,None
+                text_size: self.size
+                valign: "middle"
+                halign: "right"
+                pos_hint: {"x":0, "top":0.65-0.06*2 + 0.02}
                 text: "Password: "
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
-                pos_hint: {"x":0.5, "top":0.8-0.13*2}
-                size_hint: 0.4, 0.12
+                pos_hint: {"x":0.4, "top":0.65-0.06*2}
+                size_hint: 0.4, 0.05
                 id: password
                 multiline: False
                 password: True
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 18**4
+
+            Label:
+                size_hint: 0.38,None
+                text_size: self.size
+                valign: "middle"
+                halign: "right"
+                pos_hint: {"x":0, "top":0.65-0.06*3 + 0.02}
+                text: "Date Of Birth: "
+                font_size: (root.width**2 + root.height**2) / 18**4
+
+            TextInput:
+                pos_hint: {"x":0.4, "top":0.65-0.06*3}
+                size_hint: 0.4, 0.05
+                id: dateofbirth
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 18**4
+
+            Label:
+                size_hint: 0.38,None
+                text_size: self.size
+                valign: "middle"
+                halign: "right"
+                pos_hint: {"x":0, "top":0.65-0.06*4 + 0.02}
+                text: "Nationality: "
+                font_size: (root.width**2 + root.height**2) / 18**4
+
+            TextInput:
+                pos_hint: {"x":0.4, "top":0.65-0.06*4}
+                size_hint: 0.4, 0.05
+                id: nationality
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 18**4
+            
+            Label:
+                size_hint: 0.38,None
+                text_size: self.size
+                valign: "middle"
+                halign: "right"
+                pos_hint: {"x":0, "top":0.65-0.06*5 + 0.02}
+                text: "Phone Number: "
+                font_size: (root.width**2 + root.height**2) / 18**4
+
+            TextInput:
+                pos_hint: {"x":0.4, "top":0.65-0.06*5}
+                size_hint: 0.4, 0.05
+                id: phonenumber
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 18**4
         
         Button:
-            pos_hint:{"x":0.3,"y":0.2}
-            size_hint: 0.4, 0.15
-            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint:{"x":0.6,"top":0.275}
+            size_hint: 0.2, 0.06
+            font_size: (root.width**2 + root.height**2) / 19**4
             text: "Register"
             on_release:
                 root.manager.transition.direction = "up"
@@ -116,7 +189,14 @@
             on_release:
                 root.manager.transition.direction = "left"
                 root.login()
-        
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
+
 
 
 <LoginUserWindow>:
@@ -134,56 +214,75 @@
 
         Label:
             text: "LOGIN"
-            size_hint: 0.8, 0.2
-            pos_hint: {"x":0.1, "top":1}
-            font_size: (root.width**2 + root.height**2) / 15**4
+            size_hint: 0.8, None
+            pos_hint: {"x":0.1, "top":0.73}
+            font_size: (root.width**2 + root.height**2) / 14**4
 
         Label:
-            text:"Email: "
+            text:"Email:   "
+            text_size: self.size
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x":0.1, "top":0.8}
-            size_hint: 0.35, 0.15
+            pos_hint: {"x":0.18, "top":0.57}
+            halign: "right"
+            valign: "middle"
+            size_hint: 0.2, None
 
         TextInput:
             id: email
             multiline: False
             email: True
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x": 0.45 , "top":0.8}
-            size_hint: 0.4, 0.1
+            pos_hint: {"x": 0.38 , "top":0.55}
+            size_hint: 0.4, 0.05
 
         Label:
-            text:"Password: "
+            text:"Password:   "
+            text_size: self.size
+            halign: "right"
+            valign: "middle"
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x":0.1, "top":0.7}
-            size_hint: 0.35, 0.15
+            pos_hint: {"x":0.18, "top":0.51}
+            size_hint: 0.2, None
 
         TextInput:
             id: password
+
             multiline: False
             password: True
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x": 0.45, "top":0.7}
-            size_hint: 0.4, 0.1
-
+            pos_hint: {"x": 0.38, "top":0.49}
+            size_hint: 0.4,0.05
         Button:
-            pos_hint:{"x":0.3,"y":0.2}
-            size_hint: 0.4, 0.2
-            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint:{"x":0.38,"top":0.40}
+            size_hint: 0.2, 0.06
+            font_size: (root.width**2 + root.height**2) / 19**4
+            text: "Forgot Password"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.login()
+        Button:
+            pos_hint:{"x":0.58,"top":0.40}
+            size_hint: 0.2, 0.06
+            font_size: (root.width**2 + root.height**2) / 19**4
             text: "Login"
             on_release:
                 root.manager.transition.direction = "up"
                 root.login()
-
         Button:
             pos_hint:{"x":0.35,"y":0.05}
             size_hint: 0.3, 0.1
-            font_size: (root.width**2 + root.height**2) / 19**4
+            font_size: (root.width**2 + root.height**2) / 20**4
             text: "Don't have an Account? Create one!"
             on_release:
                 root.manager.transition.direction = "right"
                 root.register()
-
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
 
 <MainWindow>:
     name: "main_page"
@@ -191,6 +290,7 @@
     email: email
     created:created
     search: search
+    balance: balance
 
     FloatLayout:
         Image:
@@ -199,38 +299,77 @@
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
         Label:
+            pos_hint:{"x": 0.25, "top":0.94}
+            size_hint:0.15, None
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+            bold: True
+            text: "e-wallet balance: "
+            color: 1, 230/255, 0, 1
+            font_size: (root.width**2 + root.height**2) / 20**4
+        Label:
+            id: balance
+            pos_hint:{"x": 0.25, "top":0.92}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+            size_hint:0.15, None
+            text: "Rp  "
+            color: 1, 230/255, 0, 1
+            font_size: (root.width**2 + root.height**2) / 21**4
+        Button:
+            pos_hint:{"x":0.25, "top": 0.86}
+            size_hint:0.05,0.025
+            text: "Top Up"
+            font_size: (root.width**2 + root.height**2) / 22**4
+            on_release:
+                app.root.current = "topup"
+                root.manager.transition.direction = "left"
+        Label:
             id: full_name
-            pos_hint:{"x": 0.6, "top":0.96}
+            pos_hint:{"x": 0.63, "top":0.95}
             size_hint:0.15, None
             text: "Account Name: "
             font_size: (root.width**2 + root.height**2) / 21**4
 
         Label:
             id: email
-            pos_hint:{"x": 0.6, "top":.94}
+            pos_hint:{"x": 0.63, "top":.93}
             size_hint:0.15, None
             text: "Email: "
             font_size: (root.width**2 + root.height**2) / 21**4
 
         Label:
             id: created
-            pos_hint:{"x": 0.6, "top":0.92}
+            pos_hint:{"x": 0.63, "top":0.91}
             size_hint:0.15, None
             text: "Created: "
             font_size: (root.width**2 + root.height**2) / 21**4
-        Button:
-            pos_hint:{"x":0.6, "top": 0.86}
-            size_hint:0.15,0.025
-            text: "My Profile"
-            font_size: (root.width**2 + root.height**2) / 22**4
         
-        Button:
-            pos_hint:{"x":0.8, "top": 0.94}
-            size_hint:0.1,0.075
-            text: "Log Out"
+        ImageButton:
+            pos_hint:{"x":0.9, "top": 0.915}
+            source: 'logout.png'
+            size_hint:0.05,0.05
+            # text: "Log Out"
             on_release:
                 app.root.current = "login"
                 root.manager.transition.direction = "down"
+        ImageButton:
+            pos_hint:{"x":0.83, "top": 0.92}
+            source: 'help.png'
+            size_hint:0.06,0.06
+            on_release:
+                app.root.current = "help"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            pos_hint:{"x":0.77, "top": 0.92}
+            source: 'profile.png'
+            size_hint:0.063,0.063
+            on_release:
+                app.root.current = "profile"
+                root.manager.transition.direction = "left"
+        
 
         TextInput:
             id: search
@@ -518,9 +657,6 @@
             halign: "left"
             pos_hint: {"x":0.47, "top":0.33}
             font_size: (root.width**2 + root.height**2) / 20**4
-
-            
-
         Button:
             pos_hint:{"x":0.04, "top": 0.1}
             size_hint:0.1,0.05
@@ -528,8 +664,7 @@
             font_size: 20
             on_release:
                 app.root.current = "main_page"
-                root.manager.transition.direction = "left"
-
+                root.manager.transition.direction = "right"
         Button:
             pos_hint:{"x": 0.47 + (1-0.47-0.35)/2,"y": 0.15}
             valign: 'middle'
@@ -538,3 +673,147 @@
             on_release:
                 app.root.current = "purchase"
                 root.manager.transition.direction = "left"
+
+<ProfileWindow>:
+    name: "profile"
+
+    FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
+
+        Label:
+            text: "MY PROFILE"
+            size_hint: (1), None
+            text_size: self.size
+            halign: "center"
+            pos_hint: {"x":0, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text: "Name: "
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.72}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            text: "Email: "
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.68}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            text: "Password: "
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.64}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            text: "Date of Birth: "
+            text_size: self.size
+            size_hint: (0.47),None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.60}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            text: "Nationality: "
+            text_size: self.size
+            size_hint: (0.47),None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.56}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            text: "Phone Number: "
+            text_size: self.size
+            size_hint: (0.47),None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.52}
+            font_size: (root.width**2 + root.height**2) / 19**4
+
+        Button:
+            pos_hint:{"x":0.47, "top": 0.40}
+            size_hint:0.15,0.05
+            text: "Change Password"
+            font_size: 22
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "right"
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "right"
+<HelpWindow>:
+    name: "help"
+
+    FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
+
+        Label:
+            text: "HELP"
+            size_hint: 1, None
+            text_size: self.size
+            halign: "center"
+            pos_hint: {"x":0, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text: "An old man lived in the village. He was one of the most unfortunate people in the world. The whole village was tired of him; he was always gloomy, he constantly complained and was always in a bad mood.\n The longer he lived, the more bile he was becoming and the more poisonous were his words. People avoided him, because his misfortune became contagious. It was even unnatural and insulting to be happy next to him.\nHe created the feeling of unhappiness in others.But oneday, when he turned eighty years old, an incredible thing happened. Instantly everyone started hearing the rumour:"
+            text_size: self.size
+            size_hint: 0.6,0.4
+            valign: "top"
+            halign: "center"
+            pos_hint: {"x":0.2, "top":0.65}
+            font_size: (root.width**2 + root.height**2) / 20**4
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "right"
+
+<TopUpWindow>:
+    name: "topup"
+
+    FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
+
+        Label:
+            text: "TOP UP E-WALLET"
+            size_hint: 1, None
+            text_size: self.size
+            halign: "center"
+            pos_hint: {"x":0, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text: "An old man lived in the village. He was one of the most unfortunate people in the world. The whole village was tired of him; he was always gloomy, he constantly complained and was always in a bad mood.\n The longer he lived, the more bile he was becoming and the more poisonous were his words. People avoided him, because his misfortune became contagious. It was even unnatural and insulting to be happy next to him.\nHe created the feeling of unhappiness in others.But oneday, when he turned eighty years old, an incredible thing happened. Instantly everyone started hearing the rumour:"
+            text_size: self.size
+            size_hint: 0.6,0.4
+            valign: "top"
+            halign: "center"
+            pos_hint: {"x":0.2, "top":0.65}
+            font_size: (root.width**2 + root.height**2) / 20**4
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "right"
