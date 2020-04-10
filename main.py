@@ -6,8 +6,17 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from kivy.uix.image import Image
 from backend import Database
+<<<<<<< Updated upstream
+=======
+from kivy.core.window import Window
+from kivy.uix.checkbox import CheckBox
+from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE
+>>>>>>> Stashed changes
 
+class FirstWindow(Screen):
+    pass
 
 class RegisterUserWindow(Screen):
     full_name = ObjectProperty(None)
@@ -99,6 +108,38 @@ class MainWindow(Screen):
         self.email.text = "Email: " + self.current
         self.created.text = "Created On: " + created
 
+class PurchaseWindow(Screen):
+
+    saldo = ObjectProperty(None)
+    harga = ObjectProperty(None)
+    def on_enter(self, *args):
+        self.balance.text = "80.000"
+        self.price.text = "100.000"
+
+    def purchase(self):
+        harga = 80
+        saldo = 100
+        
+        if(saldo<harga):
+            invalidPurchase()
+            program.current = PURCHASE_PAGE
+        else:
+            self.reset()
+            program.current = DOWNLOAD_PAGE
+        
+    def reset(self):
+        self.balance.text = ""
+        self.price.text = ""
+
+class GameDetailsWindow(Screen):
+    pass
+
+class DownloadWindow(Screen):
+    def download(self):
+        pop = Popup(title='Download game',
+                  content=Label(text='ini linknya'),
+                  size_hint=(None, None), size=(500, 200))
+        pop.open()
 
 class WindowManager(ScreenManager):
     pass
@@ -125,14 +166,27 @@ def invalidPurchase():
     pop.open()
 
 kv = Builder.load_file("my.kv")
+<<<<<<< Updated upstream
+=======
+
+db = Database("users.txt")
+>>>>>>> Stashed changes
 program = WindowManager()
 db = Database("users.txt")
 
+<<<<<<< Updated upstream
 screens = [LoginUserWindow(name="login"), RegisterUserWindow(name="register"), MainWindow(name="main"), PurchaseWindow(name="purchase"),DownloadWindow(name="download")]
 for screen in screens:
     program.add_widget(screen)
 
 program.current = "login"
+=======
+screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), MainWindow(name=MAIN_PAGE),PurchaseWindow(name=PURCHASE_PAGE),DownloadWindow(name=DOWNLOAD_PAGE),GameDetailsWindow(name=GAME_PAGE),FirstWindow(name=FIRST_PAGE)]
+for screen in screens:
+    program.add_widget(screen)
+
+program.current = FIRST_PAGE
+>>>>>>> Stashed changes
 
 
 class MyMainApp(App):

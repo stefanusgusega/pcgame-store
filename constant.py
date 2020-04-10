@@ -1,0 +1,7 @@
+LOGIN_PAGE = 'login'
+REGISTER_PAGE = 'register'
+MAIN_PAGE = 'main_page'
+PURCHASE_PAGE ='purchase'
+DOWNLOAD_PAGE = 'download'
+GAME_PAGE = 'gamedetails'
+FIRST_PAGE = 'first'

@@ -1,5 +1,50 @@
+<<<<<<< Updated upstream
 #:kivy
 
+=======
+<FirstWindow>:
+    name: "first"
+
+    FloatLayout:
+
+        Image:
+            source: 'logo.png'
+            size: self.texture_size
+            size_hint: 0.4,0.3
+            pos_hint: {"x":0.32, "top":0.70}
+
+        Label:
+            text: "Welcome!"
+            size_hint: 0.8, None
+            pos_hint: {"x":0.1, "top":0.77}
+            font_size: (root.width**2 + root.height**2) / 15**4
+
+        Label:
+            text:"Please login/register"
+            halign: 'center'
+            font_size: (root.width**2 + root.height**2) / 19**4
+            pos_hint: {"x":0.3, "top":0.4}
+            size_hint: 0.4, None
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.2, 0.075
+            font_size: (root.width**2 + root.height**2) / 19**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "left"
+                app.root.current = "login"
+
+        Button:
+            pos_hint:{"x":0.51,"y":0.25}
+            size_hint: 0.2, 0.075
+            font_size: (root.width**2 + root.height**2) / 19**4
+            text: "Register"
+            on_release:
+                root.manager.transition.direction = "left"
+                app.root.current = "register"
+                
+>>>>>>> Stashed changes
 <RegisterUserWindow>:
     name: "register"
     full_name: full_name
@@ -76,6 +121,7 @@
             on_release:
                 root.manager.transition.direction = "left"
                 root.login()
+        
 
 
 <LoginUserWindow>:
@@ -85,15 +131,21 @@
 
     FloatLayout:
 
+        Image:
+            source: 'logo.png'
+            size: self.texture_size
+            size_hint: 0.3,0.3
+            pos_hint: {"x":0.05, "top":1}
+
         Label:
-            text: "Login"
+            text: "LOGIN"
             size_hint: 0.8, 0.2
             pos_hint: {"x":0.1, "top":1}
-            font_size: (root.width**2 + root.height**2) / 14**4
+            font_size: (root.width**2 + root.height**2) / 15**4
 
         Label:
             text:"Email: "
-            font_size: (root.width**2 + root.height**2) / 15**4
+            font_size: (root.width**2 + root.height**2) / 18**4
             pos_hint: {"x":0.1, "top":0.8}
             size_hint: 0.35, 0.15
 
@@ -101,13 +153,13 @@
             id: email
             multiline: False
             email: True
-            font_size: (root.width**2 + root.height**2) / 15**4
+            font_size: (root.width**2 + root.height**2) / 18**4
             pos_hint: {"x": 0.45 , "top":0.8}
             size_hint: 0.4, 0.1
 
         Label:
             text:"Password: "
-            font_size: (root.width**2 + root.height**2) / 15**4
+            font_size: (root.width**2 + root.height**2) / 18**4
             pos_hint: {"x":0.1, "top":0.7}
             size_hint: 0.35, 0.15
 
@@ -115,7 +167,7 @@
             id: password
             multiline: False
             password: True
-            font_size: (root.width**2 + root.height**2) / 15**4
+            font_size: (root.width**2 + root.height**2) / 18**4
             pos_hint: {"x": 0.45, "top":0.7}
             size_hint: 0.4, 0.1
 
@@ -143,30 +195,351 @@
     full_name: full_name
     email: email
     created:created
+    search: search
 
     FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
         Label:
             id: full_name
-            pos_hint:{"x": 0.1, "top":0.9}
-            size_hint:0.8, 0.2
+            pos_hint:{"x": 0.6, "top":0.96}
+            size_hint:0.15, None
             text: "Account Name: "
+            font_size: (root.width**2 + root.height**2) / 21**4
 
         Label:
             id: email
-            pos_hint:{"x": 0.1, "top":0.7}
-            size_hint:0.8, 0.2
+            pos_hint:{"x": 0.6, "top":.94}
+            size_hint:0.15, None
             text: "Email: "
+            font_size: (root.width**2 + root.height**2) / 21**4
 
         Label:
             id: created
-            pos_hint:{"x": 0.1, "top":0.5}
-            size_hint:0.8, 0.2
+            pos_hint:{"x": 0.6, "top":0.92}
+            size_hint:0.15, None
             text: "Created: "
-
+            font_size: (root.width**2 + root.height**2) / 21**4
         Button:
-            pos_hint:{"x":0.2, "y": 0.1}
-            size_hint:0.6,0.2
+            pos_hint:{"x":0.6, "top": 0.86}
+            size_hint:0.15,0.025
+            text: "My Profile"
+            font_size: (root.width**2 + root.height**2) / 22**4
+        
+        Button:
+            pos_hint:{"x":0.8, "top": 0.94}
+            size_hint:0.1,0.075
             text: "Log Out"
             on_release:
                 app.root.current = "login"
                 root.manager.transition.direction = "down"
+
+        TextInput:
+            id: search
+            multiline: False
+            # email: True
+            font_size: (root.width**2 + root.height**2) / 22**4
+            pos_hint: {"x": 0.04 , "top":0.79}
+            size_hint: 0.2, 0.025
+        Button:
+            pos_hint:{"x":0.25, "top": 0.79}
+            size_hint:0.05,0.025
+            text: "Search"
+            font_size: (root.width**2 + root.height**2) / 22**4
+
+        
+        # GAME ROW 1
+        Button:
+            pos_hint:{"x":0.04, "top": 0.75}
+            size_hint:0.1,0.15
+            text: "Game"
+            on_release:
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        Button:
+            pos_hint:{"x":0.15, "top": 0.75}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.26, "top": 0.75}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.37, "top": 0.75}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.48, "top": 0.75}
+            size_hint:0.1,0.15
+            text: "Game"
+
+        # GAME ROW 2
+        Button:
+            pos_hint:{"x":0.04, "top": 0.59}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.15, "top": 0.59}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.26, "top": 0.59}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.37, "top": 0.59}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.48, "top": 0.59}
+            size_hint:0.1,0.15
+            text: "Game"
+        # GAME ROW 3
+        Button:
+            pos_hint:{"x":0.04, "top": 0.43}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.15, "top": 0.43}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.26, "top": 0.43}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.37, "top": 0.43}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.48, "top": 0.43}
+            size_hint:0.1,0.15
+            text: "Game"
+        # GAME ROW 4
+        Button:
+            pos_hint:{"x":0.04, "top": 0.27}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.15, "top": 0.27}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.26, "top": 0.27}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.37, "top": 0.27}
+            size_hint:0.1,0.15
+            text: "Game"
+        Button:
+            pos_hint:{"x":0.48, "top": 0.27}
+            size_hint:0.1,0.15
+            text: "Game"
+
+        Label:
+            pos_hint:{"x": 0.59, "top":0.83}
+            size_hint: (1-0.59), None
+            text: "Transactions"
+            font_size: (root.width**2 + root.height**2) / 18**4
+        
+
+<PurchaseWindow>:
+    name: "purchase"
+    balance: balance
+    price: price
+
+    FloatLayout:
+        Label:
+            text: "Buy <NAMA GAME> Confirmation"
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text: "Please make sure your e-wallet balance is enough"
+            valign: 'middle'
+            size_hint: 0.8,0.2
+            pos_hint: {"x":0.1, "top":0.7}
+            font_size: (root.width**2 + root.height**2) / 20**4
+
+        Label:
+            pos_hint:{"x": 0.25, "top":0.55}
+            valign: 'middle'
+            size_hint:0.1, 0.1
+            text: "E-wallet balance: "
+            font_size: (root.width**2 + root.height**2) / 18**4
+        
+        Label:
+            id: balance
+            pos_hint:{"x": 0.5, "top":0.55}
+            valign: 'middle'
+            size_hint:0.1, 0.1
+            # text: "tes1"
+            font_size: (root.width**2 + root.height**2) / 18**4
+
+        Label:
+            pos_hint:{"x": 0.25, "top":0.5}
+            valign: 'middle'
+            size_hint:0.1, 0.1
+            text: "Price: "
+            font_size: (root.width**2 + root.height**2) / 18**4
+        Label:
+            id: price
+            pos_hint:{"x": 0.5, "top":0.5}
+            valign: 'middle'
+            size_hint:0.1, 0.1
+            # text: "tes2"
+            font_size: (root.width**2 + root.height**2) / 18**4
+
+        Button:
+            pos_hint:{"x":0.3, "y": 0.25}
+            size_hint:0.15,0.075
+            text: "Cancel"
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "right"
+        Button:
+            pos_hint:{"x":0.5, "y": 0.25}
+            size_hint:0.15,0.075
+            text: "Buy Game"
+            on_release:
+                root.purchase()
+                #app.root.current = "main"
+                root.manager.transition.direction = "left"
+
+<DownloadWindow>:
+    name: "download"
+
+    FloatLayout:
+        Label:
+            text: "Purchase Success!"
+            valign: 'middle'
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text: "Click button below to get the link to download the game"
+            valign: 'middle'
+            size_hint: 0.8,0.2
+            pos_hint: {"x":0.1, "top":0.7}
+            font_size: (root.width**2 + root.height**2) / 19**4
+
+        Button:
+            pos_hint:{"x":0.4, "top": 0.5}
+            size_hint:0.175,0.075
+            text: "Download Game"
+            on_release:
+                root.download()
+
+        Button:
+            pos_hint:{"x":0.475, "top": 0.4}
+            size_hint:0.1,0.05
+            text: "Back to Home"
+            font_size: 20
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "left"
+
+<GameDetailsWindow>:
+    name: "gamedetails"
+
+    FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
+
+        Image:
+            source: 'game1.jpg'
+            size: self.texture_size
+            size_hint: 0.4,0.6
+            pos_hint: {"x":0.05, "top":0.75}
+
+        Label:
+            text: "<JUDUL GAME>"
+            size_hint: (1-0.47), None
+            pos_hint: {"x":0.47, "top":0.77}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text: "Size: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.72}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            text: "Price: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.69}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            text: "Description: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.66}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            text: "Minimum System Requirements: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.45}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            text: "OS: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.42}
+            font_size: (root.width**2 + root.height**2) / 20**4
+        Label:
+            text: "Processor: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.39}
+            font_size: (root.width**2 + root.height**2) / 20**4
+        Label:
+            text: "Graphics: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.36}
+            font_size: (root.width**2 + root.height**2) / 20**4
+        Label:
+            text: "Storage: "
+            text_size: self.size
+            size_hint: (1-0.47),None
+            halign: "left"
+            pos_hint: {"x":0.47, "top":0.33}
+            font_size: (root.width**2 + root.height**2) / 20**4
+
+            
+
+        Button:
+            pos_hint:{"x":0.04, "top": 0.1}
+            size_hint:0.1,0.05
+            text: "Back to Home"
+            font_size: 20
+            on_release:
+                app.root.current = "main_page"
+                root.manager.transition.direction = "left"
+
+        Button:
+            pos_hint:{"x": 0.47 + (1-0.47-0.35)/2,"y": 0.15}
+            valign: 'middle'
+            size_hint:(0.35),0.06
+            text: "Purchase (Inka)"
+            on_release:
+                app.root.current = "purchase"
+                root.manager.transition.direction = "left"
