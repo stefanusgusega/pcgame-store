@@ -8,12 +8,9 @@ from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from kivy.uix.image import Image
 from backend import Database
-<<<<<<< Updated upstream
-=======
 from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE
->>>>>>> Stashed changes
 
 class FirstWindow(Screen):
     pass
@@ -28,7 +25,7 @@ class RegisterUserWindow(Screen):
             db.add_user(self.email.text, self.password.text, self.full_name.text)
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main"
+            program.current = "main_page"
         else:
             invalidForm()
 
@@ -50,7 +47,7 @@ class LoginUserWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main"
+            program.current = "main_page"
         else:
             invalidPurchase()
 
@@ -165,33 +162,20 @@ def invalidPurchase():
                     size_hint = (None,None), size = (600,200))
     pop.open()
 
+class MyMainApp(App):
+    def build(self):
+        return program
 kv = Builder.load_file("my.kv")
-<<<<<<< Updated upstream
-=======
-
-db = Database("users.txt")
->>>>>>> Stashed changes
 program = WindowManager()
 db = Database("users.txt")
 
-<<<<<<< Updated upstream
-screens = [LoginUserWindow(name="login"), RegisterUserWindow(name="register"), MainWindow(name="main"), PurchaseWindow(name="purchase"),DownloadWindow(name="download")]
-for screen in screens:
-    program.add_widget(screen)
-
-program.current = "login"
-=======
 screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), MainWindow(name=MAIN_PAGE),PurchaseWindow(name=PURCHASE_PAGE),DownloadWindow(name=DOWNLOAD_PAGE),GameDetailsWindow(name=GAME_PAGE),FirstWindow(name=FIRST_PAGE)]
 for screen in screens:
     program.add_widget(screen)
 
 program.current = FIRST_PAGE
->>>>>>> Stashed changes
 
 
-class MyMainApp(App):
-    def build(self):
-        return program
 
 
 if __name__ == "__main__":
