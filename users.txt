@@ -2,3 +2,4 @@ tim@gmail.com;1234;tim;2019-03-02
 jones@gmail.com;jon;Jones NA;2020-04-05
 mike@gmail.com;mike;Mike;2020-04-05
 1;1;1;1
+asd@asd.com;asd;asd;2020-04-11

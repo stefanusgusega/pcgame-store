@@ -31,13 +31,13 @@ class RegisterUserWindow(Screen):
             db.add_user(self.email.text, self.password.text, self.full_name.text)
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main_page"
+            program.current = MAIN_PAGE
         else:
             invalidForm()
 
     def login(self):
         self.reset()
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def reset(self):
         self.email.text = ""

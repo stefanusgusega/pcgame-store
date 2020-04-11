@@ -11,6 +11,8 @@ from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE
 
+from util import invalidLogin, invalidForm, invalidPurchase
+
 from ImageButton import ImageButton
 from LabelButton import LabelButton
 from FirstWindow import FirstWindow
@@ -24,7 +26,6 @@ from ProfileWindow import ProfileWindow
 from HelpWindow import HelpWindow
 from TopUpWindow import TopUpWindow
 from WindowManager import WindowManager
-from MyMainApp import MyMainApp
 
 kv = Builder.load_file("my.kv")
 program = WindowManager()
@@ -35,3 +36,7 @@ for screen in screens:
     program.add_widget(screen)
 
 program.current = FIRST_PAGE
+
+class MainApp(App):
+    def build(self):
+        return program

@@ -26,13 +26,13 @@ class LoginUserWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main_page"
+            program.current = MAIN_PAGE
         else:
             invalidForm()
 
     def register(self):
         self.reset()
-        program.current = "register"
+        program.current = REGISTER_PAGE
 
     def reset(self):
         self.email.text = ""

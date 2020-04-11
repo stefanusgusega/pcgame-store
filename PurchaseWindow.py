@@ -32,10 +32,10 @@ class PurchaseWindow(Screen):
         
         if(saldo<harga):
             invalidPurchase()
-            program.current = "purchase"
+            program.current = PURCHASE_PAGE
         else:
             self.reset()
-            program.current = "download"
+            program.current = DOWNLOAD_PAGE
         
     def reset(self):
         self.balance.text = ""

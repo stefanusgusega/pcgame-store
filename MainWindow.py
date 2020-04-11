@@ -26,7 +26,7 @@ class MainWindow(Screen):
     current = ""
 
     def logout(self):
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def on_enter(self, *args):
         password, full_name, created = db.get_user(self.current)
