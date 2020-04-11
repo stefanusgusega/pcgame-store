@@ -13,6 +13,16 @@ from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.gridlayout import GridLayout
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE,FORGOT_PAGE,CHANGE_PAGE
+from kivy.core.text import LabelBase
+
+LabelBase.register(name="Helvetica",
+    fn_regular="Helvetica 400.ttf",
+    fn_bold="helvetica-bold.ttf"
+    )
+LabelBase.register(name="Circular",
+    fn_regular="lineto-circular-pro-medium.ttf",
+    fn_bold="lineto-circular-black.ttf"
+    )
 
 
 class ImageButton(ButtonBehavior,Image):
