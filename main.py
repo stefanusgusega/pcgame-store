@@ -1,5 +1,3 @@
-# main.py
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -10,7 +8,7 @@ from kivy.uix.image import Image
 from backend import Database
 from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
-from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE
+from constant import *
 
 class FirstWindow(Screen):
     pass
@@ -38,7 +36,6 @@ class RegisterUserWindow(Screen):
         self.password.text = ""
         self.full_name.text = ""
 
-
 class LoginUserWindow(Screen):
     email = ObjectProperty(None)
     password = ObjectProperty(None)
@@ -59,36 +56,12 @@ class LoginUserWindow(Screen):
         self.email.text = ""
         self.password.text = ""
 
-class PurchaseWindow(Screen):
-
-    saldo = ObjectProperty(None)
-    harga = ObjectProperty(None)
-    def on_enter(self, *args):
-        self.balance.text = "80.000"
-        self.price.text = "100.000"
-
-    def purchase(self):
-        harga = 80
-        saldo = 100
-        
-        if(saldo<harga):
-            invalidPurchase()
-            program.current = "purchase"
-        else:
-            self.reset()
-            program.current = "download"
-        
-    def reset(self):
-        self.balance.text = ""
-        self.price.text = ""
-
 class DownloadWindow(Screen):
     def download(self):
         pop = Popup(title='Download game',
                   content=Label(text='ini linknya'),
                   size_hint=(None, None), size=(500, 200))
         pop.open()
-
 
 class MainWindow(Screen):
     full_name = ObjectProperty(None)
@@ -131,16 +104,8 @@ class PurchaseWindow(Screen):
 class GameDetailsWindow(Screen):
     pass
 
-class DownloadWindow(Screen):
-    def download(self):
-        pop = Popup(title='Download game',
-                  content=Label(text='ini linknya'),
-                  size_hint=(None, None), size=(500, 200))
-        pop.open()
-
 class WindowManager(ScreenManager):
     pass
-
 
 def invalidLogin():
     pop = Popup(title='Invalid Login',
@@ -165,6 +130,7 @@ def invalidPurchase():
 class MyMainApp(App):
     def build(self):
         return program
+        
 kv = Builder.load_file("my.kv")
 program = WindowManager()
 db = Database("users.txt")
