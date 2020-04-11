@@ -1,5 +1,3 @@
-# main.py
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -13,9 +11,10 @@ from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE
 
-
+# class
 class ImageButton(ButtonBehavior,Image):
     pass
+
 class LabelButton(ButtonBehavior,Label):
     pass
 
@@ -50,7 +49,6 @@ class RegisterUserWindow(Screen):
         self.dateofbirth.text= ""
         self.nationality.text = ""
         self.phonenumber.text = ""
-
 
 class LoginUserWindow(Screen):
     email = ObjectProperty(None)
@@ -102,7 +100,6 @@ class DownloadWindow(Screen):
                   size_hint=(None, None), size=(500, 200))
         pop.open()
 
-
 class MainWindow(Screen):
     full_name = ObjectProperty(None)
     created = ObjectProperty(None)
@@ -119,8 +116,6 @@ class MainWindow(Screen):
         self.email.text = "Email: " + self.current
         self.created.text = "Created On: " + created
 
-
-
 class GameDetailsWindow(Screen):
     pass
 
@@ -129,20 +124,23 @@ class ProfileWindow(Screen):
 
 class HelpWindow(Screen):
     pass
+
 class TopUpWindow(Screen):
     pass
-
 
 class WindowManager(ScreenManager):
     pass
 
+class MyMainApp(App):
+    def build(self):
+        return program
 
+# def
 def invalidLogin():
     pop = Popup(title='Invalid Login',
                   content=Label(text='Invalid username or password.'),
                   size_hint=(None, None), size=(400, 400))
     pop.open()
-
 
 def invalidForm():
     pop = Popup(title='Invalid Form',
@@ -157,9 +155,6 @@ def invalidPurchase():
                     size_hint = (None,None), size = (600,200))
     pop.open()
 
-class MyMainApp(App):
-    def build(self):
-        return program
 kv = Builder.load_file("my.kv")
 program = WindowManager()
 db = Database("users.txt")
@@ -169,9 +164,6 @@ for screen in screens:
     program.add_widget(screen)
 
 program.current = FIRST_PAGE
-
-
-
 
 if __name__ == "__main__":
     MyMainApp().run()
