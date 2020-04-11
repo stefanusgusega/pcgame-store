@@ -258,8 +258,8 @@
             font_size: (root.width**2 + root.height**2) / 19**4
             text: "Forgot Password"
             on_release:
-                root.manager.transition.direction = "up"
-                root.login()
+                root.manager.transition.direction = "left"
+                app.root.current = "forgot"
         Button:
             pos_hint:{"x":0.58,"top":0.40}
             size_hint: 0.2, 0.06
@@ -291,6 +291,9 @@
     created:created
     search: search
     balance: balance
+    action: action
+    comedy: comedy
+    romance: romance
 
     FloatLayout:
         Image:
@@ -384,7 +387,10 @@
             text: "Search"
             font_size: (root.width**2 + root.height**2) / 22**4
 
+    
+
         
+            
         # GAME ROW 1
         Button:
             pos_hint:{"x":0.04, "top": 0.75}
@@ -479,6 +485,54 @@
             size_hint: (1-0.59), None
             text: "Transactions"
             font_size: (root.width**2 + root.height**2) / 18**4
+
+        GridLayout:
+            cols: 6
+            padding:500,315,800,200
+            spacing: 1, 1
+            # row_default_height: 10
+            row_force_default: True
+
+            Label:
+                text: 'Action'
+                text_size: self.size
+                valign: "middle"
+                halign: "center"
+                font_size: (root.width**2 + root.height**2) / 22**4
+                size_hint:None,None
+
+            CheckBox:
+                id : action
+                size_hint:None,None
+                width:40
+
+            Label:
+                text: 'Romance'
+                text_size: self.size
+                valign: "middle"
+                halign: "center"
+                font_size: (root.width**2 + root.height**2) / 22**4
+                size_hint:None,None
+
+            CheckBox:
+                id: romance
+                size_hint:None,None
+                width:40
+            Label:
+                text: 'Comedy'
+                text_size: self.size
+                valign: "middle"
+                halign: "center"
+                font_size: (root.width**2 + root.height**2) / 22**4
+                size_hint:None,None
+
+            CheckBox:
+                id : comedy
+                size_hint:None,None
+                width:40
+
+
+
         
 
 <PurchaseWindow>:
@@ -743,8 +797,8 @@
             text: "Change Password"
             font_size: 22
             on_release:
-                app.root.current = "main_page"
-                root.manager.transition.direction = "right"
+                app.root.current = "change"
+                root.manager.transition.direction = "left"
         ImageButton:
             source: 'leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
@@ -787,14 +841,12 @@
 
 <TopUpWindow>:
     name: "topup"
-
     FloatLayout:
         Image:
             source: 'logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
-
         Label:
             text: "TOP UP E-WALLET"
             size_hint: 1, None
@@ -817,3 +869,125 @@
             on_release:
                 app.root.current = "main_page"
                 root.manager.transition.direction = "right"
+
+<ForgotPasswordWindow>:
+    name: "forgot"
+    email: email
+    FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
+        Label:
+            text: "FORGOT PASSWORD"
+            size_hint: 1, None
+            text_size: self.size
+            halign: "center"
+            pos_hint: {"x":0, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text:"Email:   "
+            text_size: self.size
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x":0.18, "top":0.62}
+            halign: "right"
+            valign: "middle"
+            size_hint: 0.2, None
+        TextInput:
+            id: email
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x": 0.38, "top":0.6}
+            size_hint: 0.4,0.05
+        Button:
+            pos_hint:{"x":0.58,"top":0.53}
+            size_hint: 0.2, 0.06
+            font_size: (root.width**2 + root.height**2) / 19**4
+            text: "Change Password"
+            on_release:
+                root.change()
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+
+<ChangePasswordWindow>:
+    name: "change"
+    oldpassword: oldpassword
+    newpassword: newpassword
+    newpassword1: newpassword1
+
+    FloatLayout:
+        Image:
+            source: 'logo.png'
+            # size: self.texture_size
+            size_hint: 0.25,0.15
+            pos_hint: {"x":0.02, "top":0.97}
+        Label:
+            text: "CHANGE PASSWORD"
+            size_hint: 1, None
+            text_size: self.size
+            halign: "center"
+            pos_hint: {"x":0, "top":0.8}
+            font_size: (root.width**2 + root.height**2) / 16**4
+        Label:
+            text:"Old Password:   "
+            text_size: self.size
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x":0.18, "top":0.62}
+            halign: "right"
+            valign: "middle"
+            size_hint: 0.2, None
+        TextInput:
+            id: oldpassword
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x": 0.38, "top":0.6}
+            size_hint: 0.4,0.05
+        Label:
+            text:"New Password:  "
+            text_size: self.size
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x":0.18, "top":0.56}
+            halign: "right"
+            valign: "middle"
+            size_hint: 0.2, None
+        TextInput:
+            id: newpassword
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x": 0.38, "top":0.54}
+            size_hint: 0.4,0.05
+        Label:
+            text:"Confirm New Password:  "
+            text_size: self.size
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x":0.08, "top":0.50}
+            halign: "right"
+            valign: "middle"
+            size_hint: 0.3, None
+        TextInput:
+            id: newpassword1
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 18**4
+            pos_hint: {"x": 0.38, "top":0.48}
+            size_hint: 0.4,0.05
+        Button:
+            pos_hint:{"x":0.58,"top":0.4}
+            size_hint: 0.2, 0.06
+            font_size: (root.width**2 + root.height**2) / 19**4
+            text: "Change Password"
+            on_release:
+                root.change()
+        ImageButton:
+            source: 'leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.075}
+            size_hint:0.075,0.075
+            on_release:
+                app.root.current = "profile"
+                root.manager.transition.direction = "right"
+

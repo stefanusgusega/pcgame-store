@@ -11,7 +11,8 @@ from backend import Database
 from kivy.uix.button import ButtonBehavior
 from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
-from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE
+from kivy.uix.gridlayout import GridLayout
+from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE,FORGOT_PAGE,CHANGE_PAGE
 
 
 class ImageButton(ButtonBehavior,Image):
@@ -62,7 +63,7 @@ class LoginUserWindow(Screen):
             self.reset()
             program.current = "main_page"
         else:
-            invalidForm()
+            invalidLogin()
 
     def register(self):
         self.reset()
@@ -108,6 +109,10 @@ class MainWindow(Screen):
     created = ObjectProperty(None)
     email = ObjectProperty(None)
     balance = ObjectProperty(None)
+    search = ObjectProperty(None)
+    action = ObjectProperty(None)
+    romance = ObjectProperty(None)
+    comedy = ObjectProperty(None)
     current = ""
 
     def logout(self):
@@ -152,11 +157,29 @@ class HelpWindow(Screen):
     pass
 class TopUpWindow(Screen):
     pass
+class ForgotPasswordWindow(Screen):
+    def change(self):
+        pop = Popup(title='Forgot Password',
+                  content=Label(text='If we have your email on our database, \nwe will send you your new password.'),
+                  size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
+        pop.open()
+class ChangePasswordWindow(Screen):
+    oldpassword = ObjectProperty(None)
+    newpassword = ObjectProperty(None)
+    newpassword1 = ObjectProperty(None)
+    def change(self):
+        #POKOKNYA DISINI VALIDATE DULU YEEEE
+        pop = Popup(title='Change Password',
+                  content=Label(text='Your password is succesfully changed'),
+                  size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
+        pop.open()
+
+
 class DownloadWindow(Screen):
     def download(self):
         pop = Popup(title='Download game',
                   content=Label(text='ini linknya'),
-                  size_hint=(None, None), size=(500, 200))
+                  size_hint=(0.6,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
         pop.open()
 
 class WindowManager(ScreenManager):
@@ -166,21 +189,21 @@ class WindowManager(ScreenManager):
 def invalidLogin():
     pop = Popup(title='Invalid Login',
                   content=Label(text='Invalid username or password.'),
-                  size_hint=(None, None), size=(400, 400))
+                  size_hint=(None, None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
     pop.open()
 
 
 def invalidForm():
     pop = Popup(title='Invalid Form',
                   content=Label(text='Please fill in all inputs with valid information.'),
-                  size_hint=(None, None), size=(400, 400))
+                  size_hint=(None, None), size=(625,300),pos_hint={'x': 0.35, 'top':0.6})
 
     pop.open()
 
 def invalidPurchase():
     pop = Popup(title='Invalid Purchase', 
                     content = Label(text='Balance not enough to purchase game. \nPlease top up first'),
-                    size_hint = (None,None), size = (600,200))
+                    size_hint = (None,None), size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
     pop.open()
 
 class MyMainApp(App):
@@ -190,7 +213,11 @@ kv = Builder.load_file("my.kv")
 program = WindowManager()
 db = Database("users.txt")
 
-screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), MainWindow(name=MAIN_PAGE),PurchaseWindow(name=PURCHASE_PAGE),DownloadWindow(name=DOWNLOAD_PAGE),GameDetailsWindow(name=GAME_PAGE),FirstWindow(name=FIRST_PAGE),ProfileWindow(name=PROFILE_PAGE),HelpWindow(name=HELP_PAGE),TopUpWindow(name=TOPUP_PAGE)]
+screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), 
+MainWindow(name=MAIN_PAGE),PurchaseWindow(name=PURCHASE_PAGE),
+DownloadWindow(name=DOWNLOAD_PAGE),GameDetailsWindow(name=GAME_PAGE),
+FirstWindow(name=FIRST_PAGE),ProfileWindow(name=PROFILE_PAGE),HelpWindow(name=HELP_PAGE),
+TopUpWindow(name=TOPUP_PAGE),ForgotPasswordWindow(name=FORGOT_PAGE),ChangePasswordWindow(name=CHANGE_PAGE)]
 for screen in screens:
     program.add_widget(screen)
 
