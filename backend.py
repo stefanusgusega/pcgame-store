@@ -1,4 +1,7 @@
+# database.py
+
 import datetime
+
 
 class Database:
     def __init__(self, filename):
@@ -29,7 +32,7 @@ class Database:
             self.save()
             return 1
         else:
-            print("Email already exists")
+            print("Email exists already")
             return -1
 
     def validate(self, email, password):
