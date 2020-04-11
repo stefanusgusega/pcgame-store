@@ -11,16 +11,5 @@ from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE
 
-from util import invalidLogin, invalidForm, invalidPurchase
-
-from WindowManager import WindowManager
-
-program = WindowManager()
-db = Database("users.txt")
-
-class DownloadWindow(Screen):
-    def download(self):
-        pop = Popup(title='Download game',
-                  content=Label(text='ini linknya'),
-                  size_hint=(None, None), size=(500, 200))
-        pop.open()
+class ProfileWindow(Screen):
+    pass

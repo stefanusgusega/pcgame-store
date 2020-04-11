@@ -119,28 +119,7 @@ class MainWindow(Screen):
         self.email.text = "Email: " + self.current
         self.created.text = "Created On: " + created
 
-class PurchaseWindow(Screen):
 
-    saldo = ObjectProperty(None)
-    harga = ObjectProperty(None)
-    def on_enter(self, *args):
-        self.balance.text = "80.000"
-        self.price.text = "100.000"
-
-    def purchase(self):
-        harga = 80
-        saldo = 100
-        
-        if(saldo<harga):
-            invalidPurchase()
-            program.current = PURCHASE_PAGE
-        else:
-            self.reset()
-            program.current = DOWNLOAD_PAGE
-        
-    def reset(self):
-        self.balance.text = ""
-        self.price.text = ""
 
 class GameDetailsWindow(Screen):
     pass
@@ -152,12 +131,7 @@ class HelpWindow(Screen):
     pass
 class TopUpWindow(Screen):
     pass
-class DownloadWindow(Screen):
-    def download(self):
-        pop = Popup(title='Download game',
-                  content=Label(text='ini linknya'),
-                  size_hint=(None, None), size=(500, 200))
-        pop.open()
+
 
 class WindowManager(ScreenManager):
     pass
