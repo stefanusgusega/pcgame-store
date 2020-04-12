@@ -34,13 +34,13 @@ class RegisterUserWindow(Screen):
             db.add_user(self.email.text, self.password.text, self.full_name.text)
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main_page"
+            program.current = MAIN_PAGE
         else:
             invalidForm()
 
     def login(self):
         self.reset()
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def reset(self):
         self.email.text = ""
@@ -58,13 +58,13 @@ class LoginUserWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main_page"
+            program.current = MAIN_PAGE
         else:
             invalidForm()
 
     def register(self):
         self.reset()
-        program.current = "register"
+        program.current = REGISTER_PAGE
 
     def reset(self):
         self.email.text = ""
@@ -84,10 +84,10 @@ class PurchaseWindow(Screen):
         
         if(saldo<harga):
             invalidPurchase()
-            program.current = "purchase"
+            program.current = PURCHASE_PAGE
         else:
             self.reset()
-            program.current = "download"
+            program.current = DOWNLOAD_PAGE
         
     def reset(self):
         self.balance.text = ""
@@ -108,7 +108,7 @@ class MainWindow(Screen):
     current = ""
 
     def logout(self):
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def on_enter(self, *args):
         password, full_name, created = db.get_user(self.current)
