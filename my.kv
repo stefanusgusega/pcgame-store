@@ -3,7 +3,7 @@
     FloatLayout:
 
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             size: self.texture_size
             size_hint: 0.4,0.3
             pos_hint: {"x":0.32, "top":0.70}
@@ -51,7 +51,7 @@
     FloatLayout:
         cols:1
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             size: self.texture_size
             size_hint: 0.3,0.3
             pos_hint: {"x":0.05, "top":1}
@@ -127,7 +127,7 @@
                 valign: "middle"
                 halign: "right"
                 pos_hint: {"x":0, "top":0.65-0.06*3 + 0.02}
-                text: "Date Of Birth: "
+                text: "Date Of Birth (format: YYYY-MM-DD): "
                 font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
@@ -135,7 +135,6 @@
                 size_hint: 0.4, 0.05
                 id: dateofbirth
                 multiline: False
-                password: True
                 font_size: (root.width**2 + root.height**2) / 18**4
 
             Label:
@@ -152,7 +151,6 @@
                 size_hint: 0.4, 0.05
                 id: nationality
                 multiline: False
-                password: True
                 font_size: (root.width**2 + root.height**2) / 18**4
             
             Label:
@@ -169,7 +167,6 @@
                 size_hint: 0.4, 0.05
                 id: phonenumber
                 multiline: False
-                password: True
                 font_size: (root.width**2 + root.height**2) / 18**4
         
         Button:
@@ -190,7 +187,7 @@
                 root.manager.transition.direction = "left"
                 root.login()
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
@@ -207,7 +204,7 @@
     FloatLayout:
 
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             size: self.texture_size
             size_hint: 0.3,0.3
             pos_hint: {"x":0.05, "top":1}
@@ -277,7 +274,7 @@
                 root.manager.transition.direction = "right"
                 root.register()
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
@@ -297,7 +294,7 @@
 
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
@@ -352,7 +349,7 @@
         
         ImageButton:
             pos_hint:{"x":0.9, "top": 0.915}
-            source: 'logout.png'
+            source: 'img/logout.png'
             size_hint:0.05,0.05
             # text: "Log Out"
             on_release:
@@ -360,14 +357,14 @@
                 root.manager.transition.direction = "down"
         ImageButton:
             pos_hint:{"x":0.83, "top": 0.92}
-            source: 'help.png'
+            source: 'img/help.png'
             size_hint:0.06,0.06
             on_release:
                 app.root.current = "help"
                 root.manager.transition.direction = "left"
         ImageButton:
             pos_hint:{"x":0.77, "top": 0.92}
-            source: 'profile.png'
+            source: 'img/profile.png'
             size_hint:0.063,0.063
             on_release:
                 app.root.current = "profile"
@@ -532,9 +529,6 @@
                 width:40
 
 
-
-        
-
 <PurchaseWindow>:
     name: "purchase"
     balance: balance
@@ -636,13 +630,13 @@
 
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
 
         Image:
-            source: 'game1.jpg'
+            source: 'img/game1.jpg'
             size: self.texture_size
             size_hint: 0.4,0.6
             pos_hint: {"x":0.05, "top":0.75}
@@ -730,10 +724,11 @@
 
 <ProfileWindow>:
     name: "profile"
+    
 
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
@@ -800,18 +795,20 @@
                 app.root.current = "change"
                 root.manager.transition.direction = "left"
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
                 app.root.current = "main_page"
                 root.manager.transition.direction = "right"
+
+
 <HelpWindow>:
     name: "help"
 
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
@@ -832,7 +829,7 @@
             pos_hint: {"x":0.2, "top":0.65}
             font_size: (root.width**2 + root.height**2) / 20**4
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
@@ -843,7 +840,7 @@
     name: "topup"
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
@@ -863,19 +860,22 @@
             pos_hint: {"x":0.2, "top":0.65}
             font_size: (root.width**2 + root.height**2) / 20**4
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
                 app.root.current = "main_page"
                 root.manager.transition.direction = "right"
 
+
 <ForgotPasswordWindow>:
     name: "forgot"
     email: email
+    written_token: written_token
+
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
@@ -883,14 +883,14 @@
             text: "FORGOT PASSWORD"
             size_hint: 1, None
             text_size: self.size
-            halign: "center"
-            pos_hint: {"x":0, "top":0.8}
+            # halign: "center"
+            pos_hint: {"x":0, "top":0}
             font_size: (root.width**2 + root.height**2) / 16**4
         Label:
             text:"Email:   "
             text_size: self.size
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x":0.18, "top":0.62}
+            pos_hint: {"x":0.18, "top":0.4}
             halign: "right"
             valign: "middle"
             size_hint: 0.2, None
@@ -898,17 +898,40 @@
             id: email
             multiline: False
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x": 0.38, "top":0.6}
+            pos_hint: {"x": 0.38, "top":0.4}
             size_hint: 0.4,0.05
         Button:
-            pos_hint:{"x":0.58,"top":0.53}
+            pos_hint:{"x":0.58,"top":0.5}
             size_hint: 0.2, 0.06
             font_size: (root.width**2 + root.height**2) / 19**4
-            text: "Change Password"
+            text: "Forgot Password"
             on_release:
                 root.change()
+
+        Label:
+            size_hint: 0.38,None
+            text_size: self.size
+            valign: "middle"
+            halign: "right"
+            pos_hint: {"x":0, "top":0.7}
+            text: "Token: "
+            font_size: (root.width**2 + root.height**2) / 18**4
+        TextInput:
+            pos_hint: {"x":0.4, "top":0.7}
+            size_hint: 0.4, 0.05
+            id: written_token
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 18**4
+        Button:
+            pos_hint:{"x":0.58,"top":0.8}
+            size_hint: 0.2, 0.06
+            font_size: (root.width**2 + root.height**2) / 19**4
+            text: "Validate token"
+            on_release:
+                root.validate()
+
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
@@ -917,13 +940,13 @@
 
 <ChangePasswordWindow>:
     name: "change"
-    oldpassword: oldpassword
+    email: email
     newpassword: newpassword
     newpassword1: newpassword1
 
     FloatLayout:
         Image:
-            source: 'logo.png'
+            source: 'img/logo.png'
             # size: self.texture_size
             size_hint: 0.25,0.15
             pos_hint: {"x":0.02, "top":0.97}
@@ -935,7 +958,7 @@
             pos_hint: {"x":0, "top":0.8}
             font_size: (root.width**2 + root.height**2) / 16**4
         Label:
-            text:"Old Password:   "
+            text:"Email:  "
             text_size: self.size
             font_size: (root.width**2 + root.height**2) / 18**4
             pos_hint: {"x":0.18, "top":0.62}
@@ -943,7 +966,7 @@
             valign: "middle"
             size_hint: 0.2, None
         TextInput:
-            id: oldpassword
+            id: email
             multiline: False
             font_size: (root.width**2 + root.height**2) / 18**4
             pos_hint: {"x": 0.38, "top":0.6}
@@ -984,7 +1007,7 @@
             on_release:
                 root.change()
         ImageButton:
-            source: 'leftarrow.png'
+            source: 'img/leftarrow.png'
             pos_hint:{"x":0.04, "y": 0.075}
             size_hint:0.075,0.075
             on_release:
