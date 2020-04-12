@@ -232,17 +232,18 @@ class ProfileWindow(Screen):
     full_name = ObjectProperty(None)
     created = ObjectProperty(None)
     email = ObjectProperty(None)
-    # balance = ObjectProperty(None)
+    balance = ObjectProperty(None)
     date_of_birth = ObjectProperty(None)
     nationality = ObjectProperty(None)
     phone_number = ObjectProperty(None)
 
     def on_enter(self, *args):
         password, full_name, date_of_birth, nationality, phone_number, created = db.get_user(MainWindow.current)
+        balance = db1.get_balance(MainWindow.current)
         self.full_name_content.text = full_name
         self.email_content.text = MainWindow.current
         self.created_content.text = created
-        # self.balance.text = balance
+        self.balance_content.text = balance
         self.dob_content.text = date_of_birth
         self.nationality_content.text = nationality
         self.phone_number_content.text = phone_number
