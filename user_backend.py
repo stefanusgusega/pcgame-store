@@ -45,7 +45,7 @@ class UserDatabase:
     def save(self):
         with open(self.filename, "w") as f:
             for user in self.users:
-                f.write(user + ";" + self.users[user][0] + ";" + self.users[user][1] + ";" + self.users[user][2] + "\n")
+                f.write(user + ";" + self.users[user][0] + ";" + self.users[user][1] + ";" + self.users[user][2] + ";" + self.users[user][3] + ";" + self.users[user][4] + ";" + self.users[user][5] + "\n")
 
     def send_email(self, email, token):
         msg = MIMEMultipart()
