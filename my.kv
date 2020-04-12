@@ -10,22 +10,26 @@
 
         Label:
             text: "Welcome!"
+            font_name: "Circular"
             size_hint: 0.8, None
             pos_hint: {"x":0.1, "top":0.77}
             font_size: (root.width**2 + root.height**2) / 15**4
-
+        
         Label:
             text:"Please login/register"
+            font_name: "Circular"
             halign: 'center'
-            font_size: (root.width**2 + root.height**2) / 19**4
-            pos_hint: {"x":0.3, "top":0.4}
+            font_size: (root.width**2 + root.height**2) / 19**3.75
+            pos_hint: {"x":0.3, "top":0.45}
             size_hint: 0.4, None
 
         Button:
             pos_hint:{"x":0.3,"y":0.25}
             size_hint: 0.2, 0.075
-            font_size: (root.width**2 + root.height**2) / 19**4
+            font_size: (root.width**2 + root.height**2)/19**3.75
             text: "Login"
+            font_name: "Circular"
+            # bold: True
             on_release:
                 root.manager.transition.direction = "left"
                 app.root.current = "login"
@@ -33,8 +37,10 @@
         Button:
             pos_hint:{"x":0.51,"y":0.25}
             size_hint: 0.2, 0.075
-            font_size: (root.width**2 + root.height**2) / 19**4
+            font_size: (root.width**2 + root.height**2) / 19**3.75
             text: "Register"
+            font_name: "Circular"
+            # bold: True
             on_release:
                 root.manager.transition.direction = "left"
                 app.root.current = "register"
@@ -57,10 +63,11 @@
             pos_hint: {"x":0.05, "top":1}
 
         Label:
-            text: "REGISTER"
+            text: "Register yourself!"
+            font_name: "Circular"
             size_hint: 0.8, None
             pos_hint: {"x":0.1, "top":0.78}
-            font_size: (root.width**2 + root.height**2) / 14**4
+            font_size: (root.width**2 + root.height**2) / 14**4.1
 
         FloatLayout:
             size: root.width, root.height/2
@@ -76,9 +83,10 @@
                 text_size: self.size
                 valign: "middle"
                 halign: "right"
-                pos_hint: {"x":0, "top":0.67}
+                pos_hint: {"x":0.01, "top":0.71}
                 text: "Full name: "
-                font_size: (root.width**2 + root.height**2) / 18**4
+                font_name: "Circular"
+                font_size: (root.width**2 + root.height**2) / 18**3.9
 
             TextInput:
                 pos_hint: {"x":0.4, "top":0.65}
