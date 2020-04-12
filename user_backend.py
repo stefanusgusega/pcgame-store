@@ -55,7 +55,6 @@ class UserDatabase:
         msg['From'] = EMAIL
         msg['To'] = email
         msg['Subject'] = "Forgot Password - PCGameStore Apllication"
-
         msg.attach(MIMEText(message, 'plain'))
         server = smtplib.SMTP('smtp.gmail.com: 587')
         server.starttls()

@@ -37,7 +37,7 @@ class RegisterUserWindow(Screen):
 
     def register(self):
         if self.full_name.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.email.text.count('!') == 0 and self.password.text != "" and self.nationality.text != '' and self.phonenumber.text != '':
-            db.add_user(self.email.text, self.password.text, self.full_name.text, self.dateofbirth.text, self.nationality.text, self.phonenumber.text,150000)
+            db.add_user(self.email.text, self.password.text, self.full_name.text, self.dateofbirth.text, self.nationality.text, self.phonenumber.text, 0)
             MainWindow.current = self.email.text
             self.reset()
             program.current = MAIN_PAGE
@@ -78,6 +78,30 @@ class LoginUserWindow(Screen):
         self.password.text = ""
 
 
+class PurchaseWindow(Screen):
+
+    saldo = ObjectProperty(None)
+    harga = ObjectProperty(None)
+
+    def on_enter(self, *args):
+        self.balance.text = "80.000"
+        self.price.text = "100.000"
+
+    def purchase(self):
+        harga = 80
+        saldo = 100
+        
+        if(saldo<harga):
+            invalidPurchase()
+            program.current = "purchase"
+        else:
+            self.reset()
+            program.current = DOWNLOAD_PAGE
+        
+    def reset(self):
+        self.balance.text = ""
+        self.price.text = ""
+
 
 class DownloadWindow(Screen):
 
@@ -111,6 +135,7 @@ class MainWindow(Screen):
         self.email.text = "Email: " + self.current
         self.created.text = "Created On: " + created
         self.balance.text = "Rp " + balanced
+
 
 
 class PurchaseWindow(Screen):
