@@ -1,4 +1,3 @@
-tim@gmail.com;1234;tim;2019-03-02
-jones@gmail.com;jon;Jones NA;2020-04-05
-mike@gmail.com;mike;Mike;2020-04-05
-1;1;1;1
+jones@gmail.com;jon;Jones NA;2000-01-01;Indonesia;009213847;2020-04-13
+mike@gmail.com;mike;MIke;2000-01-21;Iran;012938423141;2020-04-12
+bez@gmail.com;bez;Bez;2000-12-03;Jamaica;012394852213;2020-04-12

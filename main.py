@@ -1,5 +1,3 @@
-# main.py
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -7,11 +5,16 @@ from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from kivy.uix.image import Image
-from backend import Database
 from kivy.uix.button import ButtonBehavior
 from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.gridlayout import GridLayout
+from user_backend import UserDatabase
+from ewallet_backend import EwalletDatabase
+# from game_backend import GameDatabase
+
+from utils import generate_string
+
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE,FORGOT_PAGE,CHANGE_PAGE
 
 
@@ -30,19 +33,20 @@ class RegisterUserWindow(Screen):
     dateofbirth = ObjectProperty(None)
     nationality = ObjectProperty(None)
     phonenumber = ObjectProperty(None)
+    balance = ObjectProperty(None)
 
     def register(self):
-        if self.full_name.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.email.text.count('!') == 0 and self.password.text != "":
-            db.add_user(self.email.text, self.password.text, self.full_name.text)
+        if self.full_name.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.email.text.count('!') == 0 and self.password.text != "" and self.nationality.text != '' and self.phonenumber.text != '':
+            db.add_user(self.email.text, self.password.text, self.full_name.text, self.dateofbirth.text, self.nationality.text, self.phonenumber.text,150000)
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main_page"
+            program.current = MAIN_PAGE
         else:
             invalidForm()
 
     def login(self):
         self.reset()
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def reset(self):
         self.email.text = ""
@@ -61,22 +65,24 @@ class LoginUserWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            program.current = "main_page"
+            program.current = MAIN_PAGE
         else:
             invalidLogin()
 
     def register(self):
         self.reset()
-        program.current = "register"
+        program.current = REGISTER_PAGE
 
     def reset(self):
         self.email.text = ""
         self.password.text = ""
 
+
 class PurchaseWindow(Screen):
 
     saldo = ObjectProperty(None)
     harga = ObjectProperty(None)
+
     def on_enter(self, *args):
         self.balance.text = "80.000"
         self.price.text = "100.000"
@@ -90,11 +96,12 @@ class PurchaseWindow(Screen):
             program.current = "purchase"
         else:
             self.reset()
-            program.current = "download"
+            program.current = DOWNLOAD_PAGE
         
     def reset(self):
         self.balance.text = ""
         self.price.text = ""
+
 
 class DownloadWindow(Screen):
     def download(self):
@@ -116,32 +123,52 @@ class MainWindow(Screen):
     current = ""
 
     def logout(self):
-        program.current = "login"
+        program.current = LOGIN_PAGE
 
     def on_enter(self, *args):
-        password, full_name, created = db.get_user(self.current)
+        password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(self.current)
+        balanced = db1.get_balance(self.current)
         self.full_name.text = "Account Name: " + full_name
         self.email.text = "Email: " + self.current
         self.created.text = "Created On: " + created
+        self.balance.text = "Rp " + balanced
+
 
 class PurchaseWindow(Screen):
 
-    saldo = ObjectProperty(None)
-    harga = ObjectProperty(None)
+    balance = ObjectProperty(None)
+    price = ObjectProperty(None)
+    balanced = None
+    priced = None
     def on_enter(self, *args):
-        self.balance.text = "80.000"
-        self.price.text = "100.000"
+        password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(MainWindow.current)
+        balanced = db1.get_balance(MainWindow.current)
+        priced = "20000"
+        self.balance.text = balanced
+        self.price.text = priced 
+        self.balanced = int(balanced)
+        self.priced = int(priced)
 
     def purchase(self):
-        harga = 80
-        saldo = 100
         
-        if(saldo<harga):
-            invalidPurchase()
-            program.current = PURCHASE_PAGE
-        else:
-            self.reset()
-            program.current = DOWNLOAD_PAGE
+        
+        if(int(self.balanced)>int(self.priced)):
+            if(db1.substract_balance(MainWindow.current,self.priced)==1):
+                self.reset()
+                program.current = DOWNLOAD_PAGE
+            else:
+                invalidPurchase()
+                program.current = PURCHASE_PAGE
+            
+            
+    # def change(self):
+    #     #POKOKNYA DISINI VALIDATE DULU YEEEE
+    #     if(newpassword.text == newpassword1.text and MainWindow.current == self.email.text):
+    #         db.change_passsword(email, newpassword)
+    #         pop = Popup(title='Change Password',
+    #                 content=Label(text='Your password is succesfully changed'),
+    #                 size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
+    #         pop.open()
         
     def reset(self):
         self.balance.text = ""
@@ -155,24 +182,48 @@ class ProfileWindow(Screen):
 
 class HelpWindow(Screen):
     pass
+
 class TopUpWindow(Screen):
     pass
+
 class ForgotPasswordWindow(Screen):
+    email = ObjectProperty(None)
+    token = generate_string(8)
+    written_token = ObjectProperty(None)
+
     def change(self):
-        pop = Popup(title='Forgot Password',
-                  content=Label(text='If we have your email on our database, \nwe will send you your new password.'),
-                  size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
-        pop.open()
+        try:
+            db.send_email(self.email.text, self.token)
+            pop = Popup(title='Forgot Password',
+                    content=Label(text='We have send you an email. Check your inbox and enter the input the token above!'),
+                    size_hint=(None,None),size=(600,300),pos_hint={'x': 0.1, 'top':0.3})
+            pop.open()
+        except:
+            pop = Popup(title='Forgot Password',
+                    content=Label(text='We fail to send you email. Re-check your input or contact our staff'),
+                    size_hint=(None,None),size=(600,300),pos_hint={'x': 0.1, 'top':0.3})
+            pop.open()
+
+    def validate(self):
+        if(self.token == self.written_token.text):
+            program.current = CHANGE_PAGE
+            MainWindow.current = self.email.text
+
+
+
 class ChangePasswordWindow(Screen):
-    oldpassword = ObjectProperty(None)
+    # oldpassword = ObjectProperty(None)
+    email = ObjectProperty(None)
     newpassword = ObjectProperty(None)
     newpassword1 = ObjectProperty(None)
     def change(self):
         #POKOKNYA DISINI VALIDATE DULU YEEEE
-        pop = Popup(title='Change Password',
-                  content=Label(text='Your password is succesfully changed'),
-                  size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
-        pop.open()
+        if(newpassword.text == newpassword1.text and MainWindow.current == self.email.text):
+            db.change_passsword(email, newpassword)
+            pop = Popup(title='Change Password',
+                    content=Label(text='Your password is succesfully changed'),
+                    size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
+            pop.open()
 
 
 class DownloadWindow(Screen):
@@ -206,25 +257,29 @@ def invalidPurchase():
                     size_hint = (None,None), size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
     pop.open()
 
+
 class MyMainApp(App):
     def build(self):
         return program
+
 kv = Builder.load_file("my.kv")
 program = WindowManager()
-db = Database("users.txt")
+db = UserDatabase("users.txt")
+# games = GameDatabase("pcgame.txt")
+db1 = EwalletDatabase("ewallet.txt")
 
-screens = [LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), 
-MainWindow(name=MAIN_PAGE),PurchaseWindow(name=PURCHASE_PAGE),
-DownloadWindow(name=DOWNLOAD_PAGE),GameDetailsWindow(name=GAME_PAGE),
-FirstWindow(name=FIRST_PAGE),ProfileWindow(name=PROFILE_PAGE),HelpWindow(name=HELP_PAGE),
-TopUpWindow(name=TOPUP_PAGE),ForgotPasswordWindow(name=FORGOT_PAGE),ChangePasswordWindow(name=CHANGE_PAGE)]
+screens = [
+    LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), 
+    MainWindow(name=MAIN_PAGE),PurchaseWindow(name=PURCHASE_PAGE),
+    DownloadWindow(name=DOWNLOAD_PAGE),GameDetailsWindow(name=GAME_PAGE),
+    FirstWindow(name=FIRST_PAGE),ProfileWindow(name=PROFILE_PAGE),HelpWindow(name=HELP_PAGE),
+    TopUpWindow(name=TOPUP_PAGE),ForgotPasswordWindow(name=FORGOT_PAGE),ChangePasswordWindow(name=CHANGE_PAGE)
+]
+
 for screen in screens:
     program.add_widget(screen)
 
 program.current = FIRST_PAGE
-
-
-
 
 if __name__ == "__main__":
     MyMainApp().run()
