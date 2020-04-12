@@ -3,7 +3,9 @@
 Application system about purchasing PC Game
 
 ## Prerequisite
-Python 3.7
+- Python 3.7
+- Kivy
+- SMTPLIB
 
 ## How to run
 ```
