@@ -11,7 +11,7 @@ from kivy.uix.checkbox import CheckBox
 from kivy.uix.gridlayout import GridLayout
 from user_backend import UserDatabase
 from ewallet_backend import EwalletDatabase
-# from game_backend import GameDatabase
+from game_backend import GameDatabase
 
 from utils import generate_string
 
@@ -78,32 +78,9 @@ class LoginUserWindow(Screen):
         self.password.text = ""
 
 
-class PurchaseWindow(Screen):
-
-    saldo = ObjectProperty(None)
-    harga = ObjectProperty(None)
-
-    def on_enter(self, *args):
-        self.balance.text = "80.000"
-        self.price.text = "100.000"
-
-    def purchase(self):
-        harga = 80
-        saldo = 100
-        
-        if(saldo<harga):
-            invalidPurchase()
-            program.current = "purchase"
-        else:
-            self.reset()
-            program.current = DOWNLOAD_PAGE
-        
-    def reset(self):
-        self.balance.text = ""
-        self.price.text = ""
-
 
 class DownloadWindow(Screen):
+
     def download(self):
         pop = Popup(title='Download game',
                   content=Label(text='ini linknya'),
@@ -124,6 +101,8 @@ class MainWindow(Screen):
 
     def logout(self):
         program.current = LOGIN_PAGE
+    def showdetails(self, picture):
+        GameDetailsWindow.picturename = picture
 
     def on_enter(self, *args):
         password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(self.current)
@@ -138,14 +117,17 @@ class PurchaseWindow(Screen):
 
     balance = ObjectProperty(None)
     price = ObjectProperty(None)
+    download = ObjectProperty(None)
     balanced = None
     priced = None
     def on_enter(self, *args):
         password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(MainWindow.current)
         balanced = db1.get_balance(MainWindow.current)
-        priced = "20000"
+        name, size1, price1, description1, os1, processor1, graphics1, storage1 = db2.get_user(GameDetailsWindow.picturename)
+        priced = price1
         self.balance.text = balanced
         self.price.text = priced 
+        self.download.text = "Buy " + name + " Confirmation"
         self.balanced = int(balanced)
         self.priced = int(priced)
 
@@ -156,9 +138,9 @@ class PurchaseWindow(Screen):
             if(db1.substract_balance(MainWindow.current,self.priced)==1):
                 self.reset()
                 program.current = DOWNLOAD_PAGE
-            else:
-                invalidPurchase()
-                program.current = PURCHASE_PAGE
+        else:
+            invalidPurchase()
+            program.current = PURCHASE_PAGE
             
             
     # def change(self):
@@ -175,7 +157,41 @@ class PurchaseWindow(Screen):
         self.price.text = ""
 
 class GameDetailsWindow(Screen):
-    pass
+    gambar = ObjectProperty(None)
+    nama = ObjectProperty(None)
+    ukuran = ObjectProperty(None)
+    price = ObjectProperty(None)
+    description = ObjectProperty(None)
+    os = ObjectProperty(None)
+    processor = ObjectProperty(None)
+    graphics = ObjectProperty(None)
+    storage = ObjectProperty(None)
+
+    picturename = ""
+    def on_enter(self, *args):
+        name, size1, price1, description1, os1, processor1, graphics1, storage1 = db2.get_user(self.picturename)
+        self.gambar.source = self.picturename
+        self.nama.text = name
+        self.ukuran.text = "Size: " + size1
+        self.description.text = "Description: " + description1
+        self.price.text = "Price: " + price1
+        self.os.text = "OS: " + os1
+        self.processor.text = "Processor: " + processor1
+        self.graphics.text = "Graphics: " + graphics1
+        self.storage.text = "Storage: " + storage1
+    
+    def reset(self):
+        pass
+        self.nama.text = "<JUDUL GAME>" 
+        self.size.text = "Size: "
+        self.description.text = "Description: " 
+        self.price.text = "Price: " 
+        self.os.text = "OS: "
+        self.processor.text = "Processor: "
+        self.graphics.text = "Graphics: " 
+        self.storage.text = "Storage: "
+
+    
 
 class ProfileWindow(Screen):
     pass
@@ -227,6 +243,7 @@ class ChangePasswordWindow(Screen):
 
 
 class DownloadWindow(Screen):
+
     def download(self):
         pop = Popup(title='Download game',
                   content=Label(text='ini linknya'),
@@ -265,8 +282,9 @@ class MyMainApp(App):
 kv = Builder.load_file("my.kv")
 program = WindowManager()
 db = UserDatabase("users.txt")
-# games = GameDatabase("pcgame.txt")
+#games = GameDatabase("pcgame.txt")
 db1 = EwalletDatabase("ewallet.txt")
+db2 = GameDatabase("games.txt")
 
 screens = [
     LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), 
