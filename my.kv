@@ -12,7 +12,7 @@
             text: "Welcome!"
             font_name: "Circular"
             size_hint: 0.8, None
-            pos_hint: {"x":0.1, "top":0.77}
+            pos_hint: {"x":0.1, "top":0.8}
             font_size: (root.width**2 + root.height**2) / 15**4
         
         Label:
@@ -26,10 +26,9 @@
         Button:
             pos_hint:{"x":0.3,"y":0.25}
             size_hint: 0.2, 0.075
-            font_size: (root.width**2 + root.height**2)/19**3.75
+            font_size: (root.width**2 + root.height**2)/19**3.8
             text: "Login"
             font_name: "Circular"
-            # bold: True
             on_release:
                 root.manager.transition.direction = "left"
                 app.root.current = "login"
@@ -37,10 +36,9 @@
         Button:
             pos_hint:{"x":0.51,"y":0.25}
             size_hint: 0.2, 0.075
-            font_size: (root.width**2 + root.height**2) / 19**3.75
+            font_size: (root.width**2 + root.height**2) / 19**3.8
             text: "Register"
             font_name: "Circular"
-            # bold: True
             on_release:
                 root.manager.transition.direction = "left"
                 app.root.current = "register"
@@ -94,7 +92,7 @@
                 id: full_name
                 multiline: False
                 font_size: (root.width**2 + root.height**2) / 18**4
-
+                font_name: "Circular"
             Label:
                 size_hint: 0.38,None
                 text_size: self.size
@@ -103,7 +101,7 @@
                 pos_hint: {"x":0, "top":0.65-0.04}
                 text: "Email: "
                 font_size: (root.width**2 + root.height**2) / 18**4
-
+                font_name: "Circular"
             TextInput:
                 pos_hint: {"x":0.4, "top":0.65-0.06}
                 size_hint: 0.4, 0.05
@@ -111,7 +109,7 @@
                 email: True
                 multiline: False
                 font_size: (root.width**2 + root.height**2) / 18**4
-
+                font_name: "Circular"
             Label:
                 size_hint: 0.38,None
                 text_size: self.size
@@ -119,6 +117,7 @@
                 halign: "right"
                 pos_hint: {"x":0, "top":0.65-0.06*2 + 0.02}
                 text: "Password: "
+                font_name: "Circular"
                 font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
@@ -128,7 +127,7 @@
                 multiline: False
                 password: True
                 font_size: (root.width**2 + root.height**2) / 18**4
-
+                font_name: "Circular"
             Label:
                 size_hint: 0.38,None
                 text_size: self.size
@@ -137,12 +136,13 @@
                 pos_hint: {"x":0, "top":0.65-0.06*3 + 0.02}
                 text: "Date Of Birth (format: YYYY-MM-DD): "
                 font_size: (root.width**2 + root.height**2) / 18**4
-
+                font_name: "Circular"
             TextInput:
                 pos_hint: {"x":0.4, "top":0.65-0.06*3}
                 size_hint: 0.4, 0.05
                 id: dateofbirth
                 multiline: False
+                font_name: "Circular"
                 font_size: (root.width**2 + root.height**2) / 18**4
 
             Label:
@@ -152,6 +152,7 @@
                 halign: "right"
                 pos_hint: {"x":0, "top":0.65-0.06*4 + 0.02}
                 text: "Nationality: "
+                font_name: "Circular"
                 font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
@@ -159,6 +160,7 @@
                 size_hint: 0.4, 0.05
                 id: nationality
                 multiline: False
+                font_name: "Circular"
                 font_size: (root.width**2 + root.height**2) / 18**4
             
             Label:
@@ -168,6 +170,7 @@
                 halign: "right"
                 pos_hint: {"x":0, "top":0.65-0.06*5 + 0.02}
                 text: "Phone Number: "
+                font_name: "Circular"
                 font_size: (root.width**2 + root.height**2) / 18**4
 
             TextInput:
@@ -175,6 +178,7 @@
                 size_hint: 0.4, 0.05
                 id: phonenumber
                 multiline: False
+                font_name: "Circular"
                 font_size: (root.width**2 + root.height**2) / 18**4
         
         Button:
@@ -182,6 +186,7 @@
             size_hint: 0.2, 0.06
             font_size: (root.width**2 + root.height**2) / 19**4
             text: "Register"
+            font_name: "Circular"
             on_release:
                 root.manager.transition.direction = "up"
                 root.register()
@@ -191,6 +196,7 @@
             size_hint: 0.3, 0.1
             font_size: (root.width**2 + root.height**2) / 19**4
             text: "Already have an account? Log in!"
+            font_name: "Circular"
             on_release:
                 root.manager.transition.direction = "left"
                 root.login()
@@ -218,16 +224,18 @@
             pos_hint: {"x":0.05, "top":1}
 
         Label:
-            text: "LOGIN"
+            text: "Login"
+            font_name: "Circular"
             size_hint: 0.8, None
             pos_hint: {"x":0.1, "top":0.73}
             font_size: (root.width**2 + root.height**2) / 14**4
 
         Label:
             text:"Email:   "
+            font_name: "Circular"
             text_size: self.size
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x":0.18, "top":0.57}
+            pos_hint: {"x":0.18, "top":0.6}
             halign: "right"
             valign: "middle"
             size_hint: 0.2, None
@@ -242,11 +250,12 @@
 
         Label:
             text:"Password:   "
+            font_name: "Circular"
             text_size: self.size
             halign: "right"
             valign: "middle"
             font_size: (root.width**2 + root.height**2) / 18**4
-            pos_hint: {"x":0.18, "top":0.51}
+            pos_hint: {"x":0.18, "top":0.54}
             size_hint: 0.2, None
 
         TextInput:
@@ -732,68 +741,149 @@
 
 <ProfileWindow>:
     name: "profile"
-    
+    full_name: full_name
+    full_name_content: full_name_content
+    email: email
+    email_content: email_content
+    # balance: balance
+    date_of_birth: date_of_birth
+    dob_content: dob_content
+    nationality: nationality
+    nationality_content: nationality_content
+    phone_number: phone_number
+    phone_number_content: phone_number_content
+    created: created
+    created_content: created_content
 
     FloatLayout:
         Image:
             source: 'img/logo.png'
             # size: self.texture_size
-            size_hint: 0.25,0.15
+            size_hint: None,None
+            width: 0.25*830
+            height: 0.15*337
             pos_hint: {"x":0.02, "top":0.97}
 
         Label:
-            text: "MY PROFILE"
+            text: "My Profile"
+            font_name: "Circular"
             size_hint: (1), None
             text_size: self.size
             halign: "center"
             pos_hint: {"x":0, "top":0.8}
             font_size: (root.width**2 + root.height**2) / 16**4
         Label:
-            text: "Name: "
+            id : full_name
+            text: "Full Name :"
+            font_name: "Circular"
             text_size: self.size
             size_hint: 0.47,None
             halign: "right"
             pos_hint: {"x":0, "top":0.72}
             font_size: (root.width**2 + root.height**2) / 19**4
-        
         Label:
+            id : full_name_content
+            font_name: "Circular"
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.72}
+            font_size: (root.width**2 + root.height**2) / 19**4
+
+        Label:
+            id: email
             text: "Email: "
+            font_name: "Circular"
             text_size: self.size
             size_hint: 0.47,None
             halign: "right"
             pos_hint: {"x":0, "top":0.68}
             font_size: (root.width**2 + root.height**2) / 19**4
-        
         Label:
-            text: "Password: "
+            id : email_content
+            font_name: "Circular"
             text_size: self.size
             size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.68}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        # Label:
+        #     id: balance
+        #     text: "Balance: "
+        #     text_size: self.size
+        #     size_hint: 0.47,None
+        #     halign: "right"
+        #     pos_hint: {"x":0, "top":0.64}
+        #     font_size: (root.width**2 + root.height**2) / 19**4
+        
+        Label:
+            id: date_of_birth
+            font_name: "Circular"
+            text: "Date of Birth: "
+            text_size: self.size
+            size_hint: (0.47),None
             halign: "right"
             pos_hint: {"x":0, "top":0.64}
             font_size: (root.width**2 + root.height**2) / 19**4
-        
         Label:
-            text: "Date of Birth: "
+            id : dob_content
+            font_name: "Circular"
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.64}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            id: nationality
+            font_name: "Circular"
+            text: "Nationality: "
             text_size: self.size
             size_hint: (0.47),None
             halign: "right"
             pos_hint: {"x":0, "top":0.60}
             font_size: (root.width**2 + root.height**2) / 19**4
         Label:
-            text: "Nationality: "
+            id :  nationality_content
+            font_name: "Circular"
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.60}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            id: phone_number
+            font_name: "Circular"
+            text: "Phone Number: "
             text_size: self.size
             size_hint: (0.47),None
             halign: "right"
             pos_hint: {"x":0, "top":0.56}
             font_size: (root.width**2 + root.height**2) / 19**4
         Label:
-            text: "Phone Number: "
+            id : phone_number_content
+            font_name: "Circular"
             text_size: self.size
-            size_hint: (0.47),None
+            size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.56}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            id : created
+            font_name: "Circular"
+            text: "Created on: "
+            text_size: self.size
+            size_hint: 0.47,None
             halign: "right"
             pos_hint: {"x":0, "top":0.52}
             font_size: (root.width**2 + root.height**2) / 19**4
-
+        Label:
+            id : created_content
+            font_name: "Circular"
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.52}
+            font_size: (root.width**2 + root.height**2) / 19**4
         Button:
             pos_hint:{"x":0.47, "top": 0.40}
             size_hint:0.15,0.05
