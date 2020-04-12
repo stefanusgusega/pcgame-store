@@ -1,0 +1,3 @@
+jones@gmail.com;80000
+mike@gmail.com;180000
+bez@gmail.com;300000

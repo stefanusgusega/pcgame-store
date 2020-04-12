@@ -392,17 +392,40 @@
         
             
         # GAME ROW 1
+<<<<<<< Updated upstream
         Button:
+=======
+        ImageButton:
+            source: 'img/game3.jpg'
+>>>>>>> Stashed changes
             pos_hint:{"x":0.04, "top": 0.75}
             size_hint:0.1,0.15
             text: "Game"
             on_release:
                 app.root.current = "gamedetails"
                 root.manager.transition.direction = "left"
+<<<<<<< Updated upstream
         Button:
+=======
+        # Button:
+        #     pos_hint:{"x":0.04, "top": 0.75}
+        #     size_hint:0.1,0.15
+        #     text: "Game"
+        #     on_release:
+        #         app.root.current = "gamedetails"
+        #         root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game4.jpg'
+>>>>>>> Stashed changes
             pos_hint:{"x":0.15, "top": 0.75}
             size_hint:0.1,0.15
-            text: "Game"
+            on_release:
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        # Button:
+        #     pos_hint:{"x":0.15, "top": 0.75}
+        #     size_hint:0.1,0.15
+        #     text: "Game"
         Button:
             pos_hint:{"x":0.26, "top": 0.75}
             size_hint:0.1,0.15
