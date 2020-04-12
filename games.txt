@@ -1,0 +1,4 @@
+img/game1.jpg;Tomb Raider;1.99 GB;235000;Tomb Raider;Windows 8;2 Ghz;DirectX9;5 GB
+img/game2.jpg;W 2K20;1.92 GB;365000;W 2K20;Windows 8;2 Ghz;DirectX9;5 GB
+img/game3.jpg;NBA 2K20;3.9 GB;579000;NBA 2K20;Windows 10;2 Ghz;DirectX9;10 GB
+img/game4.jpg;Civilization IV;2.8 GB;456000;Civilization IV;Windows 8;2 Ghz;DirectX9;7 GB

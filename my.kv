@@ -1,3 +1,4 @@
+
 <FirstWindow>:
     name: "first"
     FloatLayout:
@@ -389,25 +390,38 @@
         
             
         # GAME ROW 1
-        Button:
+        ImageButton:
+            source: 'img/game1.jpg'
             pos_hint:{"x":0.04, "top": 0.75}
             size_hint:0.1,0.15
-            text: "Game"
             on_release:
+                root.showdetails('img/game1.jpg')
                 app.root.current = "gamedetails"
                 root.manager.transition.direction = "left"
-        Button:
+        ImageButton:
+            source: 'img/game2.jpg'
             pos_hint:{"x":0.15, "top": 0.75}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game2.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game3.jpg'
             pos_hint:{"x":0.26, "top": 0.75}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game3.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game4.jpg'
             pos_hint:{"x":0.37, "top": 0.75}
             size_hint:0.1,0.15
-            text: "Game"
+            on_release:
+                root.showdetails('img/game4.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
         Button:
             pos_hint:{"x":0.48, "top": 0.75}
             size_hint:0.1,0.15
@@ -531,11 +545,13 @@
 
 <PurchaseWindow>:
     name: "purchase"
+    download: download
     balance: balance
     price: price
 
     FloatLayout:
         Label:
+            id: download
             text: "Buy <NAMA GAME> Confirmation"
             size_hint: 0.8, 0.2
             pos_hint: {"x":0.1, "top":0.8}
@@ -627,6 +643,15 @@
 
 <GameDetailsWindow>:
     name: "gamedetails"
+    gambar: gambar
+    nama: nama
+    ukuran: ukuran
+    price: price
+    description: description
+    os: os
+    processor: processor
+    graphics: graphics
+    storage: storage
 
     FloatLayout:
         Image:
@@ -636,17 +661,20 @@
             pos_hint: {"x":0.02, "top":0.97}
 
         Image:
-            source: 'img/game1.jpg'
+            id: gambar
+            #source: 'img/game1.jpg'
             size: self.texture_size
             size_hint: 0.4,0.6
             pos_hint: {"x":0.05, "top":0.75}
 
         Label:
+            id: nama
             text: "<JUDUL GAME>"
             size_hint: (1-0.47), None
             pos_hint: {"x":0.47, "top":0.77}
             font_size: (root.width**2 + root.height**2) / 16**4
         Label:
+            id: ukuran
             text: "Size: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -655,6 +683,7 @@
             font_size: (root.width**2 + root.height**2) / 19**4
         
         Label:
+            id: price
             text: "Price: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -663,6 +692,7 @@
             font_size: (root.width**2 + root.height**2) / 19**4
         
         Label:
+            id: description
             text: "Description: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -678,6 +708,7 @@
             pos_hint: {"x":0.47, "top":0.45}
             font_size: (root.width**2 + root.height**2) / 19**4
         Label:
+            id: os
             text: "OS: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -685,6 +716,7 @@
             pos_hint: {"x":0.47, "top":0.42}
             font_size: (root.width**2 + root.height**2) / 20**4
         Label:
+            id: processor
             text: "Processor: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -692,6 +724,7 @@
             pos_hint: {"x":0.47, "top":0.39}
             font_size: (root.width**2 + root.height**2) / 20**4
         Label:
+            id: graphics
             text: "Graphics: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -699,6 +732,7 @@
             pos_hint: {"x":0.47, "top":0.36}
             font_size: (root.width**2 + root.height**2) / 20**4
         Label:
+            id: storage
             text: "Storage: "
             text_size: self.size
             size_hint: (1-0.47),None
@@ -719,6 +753,7 @@
             size_hint:(0.35),0.06
             text: "Purchase Game"
             on_release:
+                root.reset()
                 app.root.current = "purchase"
                 root.manager.transition.direction = "left"
 

@@ -45,7 +45,7 @@ class UserDatabase:
     def save(self):
         with open(self.filename, "w") as f:
             for user in self.users:
-                f.write(user + ";" + self.users[user][0] + ";" + self.users[user][1] + ";" + self.users[user][2] + ";" + self.users[user][3] + ";" + self.users[user][4] + ";" + self.users[user][5] + "\n")
+                f.write(user + ";" + self.users[user][0] + ";" + self.users[user][1] + ";" + self.users[user][2] + ";" + self.users[user][3] + ";" + self.users[user][4] + ";" + self.users[user][5] +"\n")
 
     def send_email(self, email, token):
         msg = MIMEMultipart()
@@ -55,7 +55,6 @@ class UserDatabase:
         msg['From'] = EMAIL
         msg['To'] = email
         msg['Subject'] = "Forgot Password - PCGameStore Apllication"
-        
         msg.attach(MIMEText(message, 'plain'))
         server = smtplib.SMTP('smtp.gmail.com: 587')
         server.starttls()
@@ -74,6 +73,16 @@ class UserDatabase:
         else:
             print("Email doesn't exist")
             return -1
+    # def substract_balance(self, email, amount):
+    #     if email.strip() in self.users:
+    #         user_data = self.get_user(email)
+    #         if user_data != -1:
+    #             self.users[email] = (self.users[email][0], self.users[email][1], self.users[email][2], self.users[email][3], self.users[email][4], self.users[email][5],str(int(self.users[email][6]) - amount))
+    #             self.save()
+    #         return 1
+    #     else:
+    #         print("Email doesn't exist")
+    #         return -1
 
     @staticmethod
     def get_date():
