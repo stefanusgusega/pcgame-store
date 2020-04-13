@@ -13,6 +13,7 @@ from user_backend import UserDatabase
 from ewallet_backend import EwalletDatabase
 from game_backend import GameDatabase
 
+
 from utils import generate_string
 
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE,FORGOT_PAGE,CHANGE_PAGE
@@ -32,7 +33,6 @@ class ImageButton(ButtonBehavior,Image):
     pass
 class LabelButton(ButtonBehavior,Label):
     pass
-
 class FirstWindow(Screen):
     pass
 
@@ -88,29 +88,6 @@ class LoginUserWindow(Screen):
         self.password.text = ""
 
 
-class PurchaseWindow(Screen):
-
-    saldo = ObjectProperty(None)
-    harga = ObjectProperty(None)
-
-    def on_enter(self, *args):
-        self.balance.text = "80.000"
-        self.price.text = "100.000"
-
-    def purchase(self):
-        harga = 80
-        saldo = 100
-        
-        if(saldo<harga):
-            invalidPurchase()
-            program.current = "purchase"
-        else:
-            self.reset()
-            program.current = DOWNLOAD_PAGE
-        
-    def reset(self):
-        self.balance.text = ""
-        self.price.text = ""
 
 
 class DownloadWindow(Screen):
@@ -144,7 +121,7 @@ class MainWindow(Screen):
         self.full_name.text = "Account Name: " + full_name
         self.email.text = "Email: " + self.current
         self.created.text = "Created On: " + created
-        self.balance.text = "Rp " + balanced
+        self.balance.text = "Rp " + balanced 
 
 
 
@@ -158,7 +135,7 @@ class PurchaseWindow(Screen):
     def on_enter(self, *args):
         password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(MainWindow.current)
         balanced = db1.get_balance(MainWindow.current)
-        name, size1, price1, description1, os1, processor1, graphics1, storage1 = db2.get_user(GameDetailsWindow.picturename)
+        name, size1, price1, description1, os1, processor1, graphics1, storage1,link = db2.get_user(GameDetailsWindow.picturename)
         priced = price1
         self.balance.text = balanced
         self.price.text = priced 
@@ -204,7 +181,7 @@ class GameDetailsWindow(Screen):
 
     picturename = ""
     def on_enter(self, *args):
-        name, size1, price1, description1, os1, processor1, graphics1, storage1 = db2.get_user(self.picturename)
+        name, size1, price1, description1, os1, processor1, graphics1, storage1,link = db2.get_user(self.picturename)
         self.gambar.source = self.picturename
         self.nama.text = name
         self.ukuran.text = "Size: " + size1
@@ -298,9 +275,11 @@ class ChangePasswordWindow(Screen):
 class DownloadWindow(Screen):
 
     def download(self):
+        name, size1, price1, description1, os1, processor1, graphics1, storage1,link = db2.get_user(GameDetailsWindow.picturename)
         pop = Popup(title='Download game',
-                  content=Label(text='ini linknya'),
-                  size_hint=(0.6,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
+                  content=Label(text=link),
+                  size_hint=(0.6,None),size=(600,300),pos_hint={'x': 0.25, 'top':0.6})
+        
         pop.open()
 
 class WindowManager(ScreenManager):

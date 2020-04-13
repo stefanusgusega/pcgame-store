@@ -333,7 +333,7 @@
             halign: "left"
             valign: "middle"
             size_hint:0.15, None
-            text: "Rp  "
+            text: "Rp "
             color: 1, 230/255, 0, 1
             font_size: (root.width**2 + root.height**2) / 21**4
         Button:
@@ -439,32 +439,57 @@
                 root.showdetails('img/game4.jpg')
                 app.root.current = "gamedetails"
                 root.manager.transition.direction = "left"
-        Button:
+        ImageButton:
+            source: 'img/game5.jpg'
             pos_hint:{"x":0.48, "top": 0.75}
             size_hint:0.1,0.15
-            text: "Game"
+            on_release:
+                root.showdetails('img/game5.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
 
         # GAME ROW 2
-        Button:
+        ImageButton:
+            source: 'img/game6.jpg'
             pos_hint:{"x":0.04, "top": 0.59}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game6.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game7.jpg'
             pos_hint:{"x":0.15, "top": 0.59}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game7.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game8.jpg'
             pos_hint:{"x":0.26, "top": 0.59}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game8.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game9.jpg'
             pos_hint:{"x":0.37, "top": 0.59}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game9.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game10.jpg'
             pos_hint:{"x":0.48, "top": 0.59}
             size_hint:0.1,0.15
-            text: "Game"
+            on_release:
+                root.showdetails('img/game10.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+
         # GAME ROW 3
         Button:
             pos_hint:{"x":0.04, "top": 0.43}
