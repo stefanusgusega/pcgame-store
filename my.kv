@@ -301,9 +301,6 @@
 
 <MainWindow>:
     name: "main_page"
-    full_name: full_name
-    email: email
-    created:created
     search: search
     balance: balance
     action: action
@@ -344,27 +341,6 @@
             on_release:
                 app.root.current = "topup"
                 root.manager.transition.direction = "left"
-        Label:
-            id: full_name
-            pos_hint:{"x": 0.63, "top":0.95}
-            size_hint:0.15, None
-            text: "Account Name: "
-            font_size: (root.width**2 + root.height**2) / 21**4
-
-        Label:
-            id: email
-            pos_hint:{"x": 0.63, "top":.93}
-            size_hint:0.15, None
-            text: "Email: "
-            font_size: (root.width**2 + root.height**2) / 21**4
-
-        Label:
-            id: created
-            pos_hint:{"x": 0.63, "top":0.91}
-            size_hint:0.15, None
-            text: "Created: "
-            font_size: (root.width**2 + root.height**2) / 21**4
-        
         ImageButton:
             pos_hint:{"x":0.9, "top": 0.915}
             source: 'img/logout.png'
@@ -954,10 +930,10 @@
             pos_hint: {"x":0.48, "top":0.48}
             font_size: (root.width**2 + root.height**2) / 19**4
         Button:
-            pos_hint:{"x":0.47, "top": 0.40}
+            pos_hint:{"x":0.47, "top": 0.10}
             size_hint:0.15,0.05
             text: "Change Password"
-            font_size: 22
+            font_size: 20
             on_release:
                 app.root.current = "change"
                 root.manager.transition.direction = "left"
