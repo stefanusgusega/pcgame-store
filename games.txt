@@ -1,10 +1,12 @@
 img/game1.jpg;Tomb Raider;1.99 GB;235000;Tomb Raider;Windows 8;2 Ghz;DirectX9;5 GB;https://pcgamestore/download/o5Sub0776m
-img/game2.jpg;W 2K20;1.92 GB;365000;W 2K20;Windows 8;2 Ghz;DirectX9;5 GB;https://pcgamestore/download/pdAfcNN9UY
+img/game2.jpg;W 2K20;1.92 GB;365000;Your favourite WWE Superstars, legends, Hall of Famers and nxt's best. Relive the ground-breaking journey of the four horsewomen in the 2K showcase story mode. For the first time ever in WWE 2K, play as both a male and female MyPlayer in MyCAREER;Windows 8;2 Ghz;DirectX9;5 GB;https://pcgamestore/download/pdAfcNN9UY
 img/game3.jpg;NBA 2K20;3.9 GB;579000;NBA 2K20;Windows 10;2 Ghz;DirectX9;10 GB;https://pcgamestore/download/Wl9rMnbblG
 img/game4.jpg;Civilization IV;2.8 GB;456000;Civilization IV;Windows 8;2 Ghz;DirectX9;7 GB;https://pcgamestore/download/jq7PxVg4A2
 img/game5.jpg;The Crew;3.8 GB;424000;Gold Edition;Windows 10;2 Ghz;DirectX9;8 GB;https://pcgamestore/download/emEGlioA2r
 img/game6.jpg;FIFA 16;5.3 GB;576000;FIFA 16;Windows 8;2 Ghz;DirectX9;10 GB;https://pcgamestore/download/GVYwzp26Wy
 img/game7.jpg;Final Fantasy VII;4,2 GB;356000;Final Fantasy;Windows 10;1.8 Ghz;DirectX9;10 GB;https://pcgamestore/download/wN23uPklDv
-img/game8.jpg;Plants Vs Zombies;2.3 GB;222000;PvZ;Windows 8;2.1 Ghz;DirectX9;6 GB;https://pcgamestore/download/gu2TKW9bKC
-img/game9.jpg;NFS Heat;3.5 GB;354000;NFS Heat;Windows 8;1.9 Ghz;DirectX9;8 GB;https://pcgamestore/download/BGBPdTd0or
-img/game10.jpg;Apex Legends;2.1 GB;387000;Apex Legends;Windows 8;2 Ghz;DirectX9;6 GB;https://pcgamestore/download/0VwNgffRXw
+img/game8.jpg;Plants Vs Zombies;2.3 GB;222000;Kick some grass in plant vs zombies battle for neighborville, the wackiest shooter yet. Unearth 20 fully customizable character classes at launch in one social region, three free-roam regions, one PvE mode, six PvP modes, including battle arena, and more;Windows 8;2.1 Ghz;DirectX9;6 GB;https://pcgamestore/download/gu2TKW9bKC
+img/game9.jpg;NFS Heat;3.5 GB;354000;Hustle by day and risk it all at night in Need for Speed Heat;Windows 8;1.9 Ghz;DirectX9;8 GB;https://pcgamestore/download/BGBPdTd0or
+img/game10.jpg;Apex Legends;2.1 GB;387000;Welcome to APEX Legends - Master a growing roster of powerful legends, each with their own personality, strengths and abilities that are easy to pick up but challenging to truly master;Windows 8;2 Ghz;DirectX9;6 GB;https://pcgamestore/download/0VwNgffRXw
+img/game11.jpg;The Sims 4;8 GB;536000;Create Sims with big personalities - Create and control a new generation of Sims! With huge personalities and even bigger aspirations, your smarter Sims are more relatable, have the ability to multi-task, and come to life with new emotions and lively animations. They provide you with endless possibilities to create stories that are rich, entertaining, and often downright hilarious.;Windows 10;2.3 Ghz;DirectX9;15 GB;https://pcgamestore/download/cUr5FaGqQc
+img/game12.jpg;Jedi Fallen Order;2 GB;257000;This narratively-driven single player game puts you in the role of a Jedi Padawan who narrowly escaped the purge of Order 66 following the events of Episode 3: Revenge of the Sith;Windows 8;2 Ghz;DirectX9;6 GB;https://pcgamestore/download/7kHfZWOSPl

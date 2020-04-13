@@ -491,14 +491,23 @@
                 root.manager.transition.direction = "left"
 
         # GAME ROW 3
-        Button:
+        ImageButton:
+            source: 'img/game11.jpg'
             pos_hint:{"x":0.04, "top": 0.43}
             size_hint:0.1,0.15
-            text: "Game"
-        Button:
+            on_release:
+                root.showdetails('img/game11.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+        ImageButton:
+            source: 'img/game12.jpg'
             pos_hint:{"x":0.15, "top": 0.43}
             size_hint:0.1,0.15
-            text: "Game"
+            on_release:
+                root.showdetails('img/game12.jpg')
+                app.root.current = "gamedetails"
+                root.manager.transition.direction = "left"
+
         Button:
             pos_hint:{"x":0.26, "top": 0.43}
             size_hint:0.1,0.15
@@ -737,9 +746,10 @@
             id: description
             text: "Description: "
             text_size: self.size
-            size_hint: (1-0.47),None
+            size_hint: (1-0.47),0.24
             halign: "left"
-            pos_hint: {"x":0.47, "top":0.66}
+            valign: "top"
+            pos_hint: {"x":0.47, "top":0.60}
             font_size: (root.width**2 + root.height**2) / 19**4
         
         Label:
@@ -781,11 +791,12 @@
             halign: "left"
             pos_hint: {"x":0.47, "top":0.33}
             font_size: (root.width**2 + root.height**2) / 20**4
-        Button:
-            pos_hint:{"x":0.04, "top": 0.1}
-            size_hint:0.1,0.05
-            text: "Back to Home"
-            font_size: 20
+
+        
+        ImageButton:
+            source: 'img/leftarrow.png'
+            pos_hint:{"x":0.04, "y": 0.05}
+            size_hint:0.075,0.075
             on_release:
                 app.root.current = "main_page"
                 root.manager.transition.direction = "right"
