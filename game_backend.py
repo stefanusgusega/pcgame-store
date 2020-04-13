@@ -13,8 +13,8 @@ class GameDatabase:
         self.games = {}
 
         for line in self.file:
-            picture, name, size, price, description, os, processor, graphics, storage = line.strip().split(";")
-            self.games[picture] = (name, size, price, description, os, processor, graphics, storage)
+            picture, name, size, price, description, os, processor, graphics, storage,link = line.strip().split(";")
+            self.games[picture] = (name, size, price, description, os, processor, graphics, storage,link)
 
         self.file.close()
 
@@ -27,4 +27,4 @@ class GameDatabase:
     def save(self):
         with open(self.filename, "w") as f:
             for name in self.games:
-                f.write(name + ";" + self.games[name][0] + ";" + self.games[name][1] + ";" + self.games[name][2] + ";" + self.games[name][3] +";" + self.games[name][4] +";" + self.games[name][5] +";" + self.games[name][6] +"\n")
+                f.write(name + ";" + self.games[name][0] + ";" + self.games[name][1] + ";" + self.games[name][2] + ";" + self.games[name][3] +";" + self.games[name][4] +";" + self.games[name][5] +";" + self.games[name][6] +";" + self.games[name][7] +"\n")
