@@ -1,0 +1,47 @@
+image: "python:3.7"
+
+before_script:
+    - python --version
+    - pip install -r requirements.txt
+
+stages:
+    - Static Analysis
+    - Test
+    - Deploy
+
+# Static Analysis
+flake8:
+    stage: Static Analysis
+    script:
+    - flake8 --max-line-length=120 *.py
+
+pylint:
+    stage: Static Analysis
+    allow_failure: true
+    script:
+    - pylint -d C0301 -d R0902 main.py ewallet_backend.py game_backend.py user_backend.py utils.py constant.py
+
+mypy:
+    stage: Static Analysis
+    allow_failure: true
+    script:
+    - pwd
+    - python -m mypy main.py ewallet_backend.py game_backend.py user_backend.py utils.py constant.py
+
+# Test
+pytest:
+    stage: Test
+    script:
+    - pwd
+    - pytest -v
+
+# Deploy
+pyinstaller:
+    stage: Deploy
+    script:
+    - pyinstaller -F -w -n PCGameStore main.py
+    artifacts:
+        name: "$CI_COMMIT_REF_SLUG"
+        paths:
+            - dist/*.exe
+        expire_in: 3 days
