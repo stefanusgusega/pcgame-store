@@ -36,7 +36,7 @@ pytest:
     - pytest -v
 
 # Deploy
-pyinstaller:
+pyinstaller_windows:
     stage: Deploy
     script:
     - pyinstaller -F -w -n PCGameStore main.py
@@ -44,4 +44,15 @@ pyinstaller:
         name: "$CI_COMMIT_REF_SLUG"
         paths:
             - dist/*.exe
-        expire_in: 3 days
+        expire_in: 7 days
+
+pyinstaller_macOS:
+    stage: Deploy
+    tags: macOS
+    script:
+    - pyinstaller -F -w -n PCGameStore main.py
+    artifacts:
+        name: "$CI_COMMIT_REF_SLUG"
+        paths:
+            - dist/*.exe
+        expire_in: 7 days
