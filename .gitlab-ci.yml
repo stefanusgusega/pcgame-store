@@ -1,5 +1,7 @@
+# versi python yang dipake
 image: "python:3.7"
 
+# sebelon dijalanin bakal ngapain dlu
 before_script:
     - python --version
     - pip install -r requirements.txt
@@ -17,12 +19,14 @@ flake8:
 
 pylint:
     stage: Static Analysis
+    # boleh fail gk, sementara gw nyalain soalnya masih bingung
     allow_failure: true
     script:
     - pylint -d C0301 -d R0902 main.py ewallet_backend.py game_backend.py user_backend.py utils.py constant.py
 
 mypy:
     stage: Static Analysis
+    # boleh fail gk, sementara gw nyalain soalnya masih bingung
     allow_failure: true
     script:
     - pwd
@@ -31,6 +35,8 @@ mypy:
 # Test
 pytest:
     stage: Test
+    # boleh fail gk, sementara gw nyalain soalnya belon ad testcase, mau ngetes ddeploy
+    allow_failure: true
     script:
     - pwd
     - pytest -v
