@@ -48,7 +48,9 @@ pyinstaller_windows:
 
 pyinstaller_macOS:
     stage: Deploy
-    tags: macOS
+    tags: 
+    - osx
+    - "macOS"
     script:
     - pyinstaller -F -w -n PCGameStore main.py
     artifacts:
