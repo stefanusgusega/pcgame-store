@@ -105,5 +105,28 @@ python main.py
     - email
     - saldo
 
+## Responsibilities
 
+- 1 Jones Napoleon Autumn
+    - Modul utama bulk aplikasi
+    - Modul login
+    - Modul register
+    - Modul forget password
+    - Modul change password
 
+- 2 Inka Anindya Riyadi
+    - Modul menampilkan deskripsi game
+    - Modul membeli game
+    - Modul validasi saldo e-wallet
+    - Modul menampilkan link download game
+    - Modul menampilkan saldo
+    - Modul pesan gagal saldo
+
+- 3 Stefanus Gusega Gunawan
+    - pytest
+    - Modul menampilkan halaman profile
+
+- 4 Fritz Gerald Tjie
+    - pytest
+    - CI/CD
+    - Modul menampilkan daftar game
