@@ -4,6 +4,8 @@ Application system about purchasing PC Game through PC application
 
 ## Prerequisite
 
+Please read this Readme carefully
+
 - Python 3.7
 - Kivy
 - SMTPLIB
@@ -15,8 +17,9 @@ Application system about purchasing PC Game through PC application
 python main.py
 ```
 
-Optionally, to try the testing, run:
+Optionally, to try the testing, do:
 ```
+cd test
 pytest -v
 ```
 
