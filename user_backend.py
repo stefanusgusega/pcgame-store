@@ -67,7 +67,7 @@ class UserDatabase:
         if email.strip() in self.users:
             user_data = self.get_user(email)
             if user_data != -1:
-                self.users[email.strip()] = (newpassword, user_data.full_name, user_data.dateofbirth, user_data.nationality, user_data.phonenumber, user_data.created)
+                self.users[email.strip()] = (newpassword, user_data[1], user_data[2], user_data[3], user_data[4], user_data[5])
                 self.save()
             return 1
         else:
