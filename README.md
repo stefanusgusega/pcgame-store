@@ -1,12 +1,13 @@
 # PC GAME STORE
 
-Application system about purchasing PC Game
+Application system about purchasing PC Game through PC application
 
 ## Prerequisite
 
 - Python 3.7
 - Kivy
 - SMTPLIB
+- PyTest (Optional)
 
 ## How to run
 
@@ -14,12 +15,11 @@ Application system about purchasing PC Game
 python main.py
 ```
 
-## Contributors
+Optionally, to try the testing, run:
+```
+pytest -v
+```
 
-- Inka Anindya Riyadi - 13518038
-- Fritz Gerald - 13518065
-- Jones Napoleon Autumn - 13518086
-- Stefanus Gusega Gunawan - 13518149
 
 ## Daftar Modul yand diimplementasikan
 
@@ -107,14 +107,15 @@ python main.py
 
 ## Responsibilities
 
-- 1 Jones Napoleon Autumn
+- Jones Napoleon Autumn - 13518086
     - Modul utama bulk aplikasi
     - Modul login
     - Modul register
     - Modul forget password
     - Modul change password
 
-- 2 Inka Anindya Riyadi
+
+- Inka Anindya Riyadi - 13518038
     - Modul menampilkan deskripsi game
     - Modul membeli game
     - Modul validasi saldo e-wallet
@@ -122,11 +123,19 @@ python main.py
     - Modul menampilkan saldo
     - Modul pesan gagal saldo
 
-- 3 Stefanus Gusega Gunawan
+
+- Stefanus Gusega Gunawan - 13518149
     - pytest
     - Modul menampilkan halaman profile
 
-- 4 Fritz Gerald Tjie
+
+- Fritz Gerald Tjie - 13518065
     - pytest
     - CI/CD
     - Modul menampilkan daftar game
+
+
+## Miscellaneous
+
+- Untuk file yang telah dicapture dan dipasang di Readme, tidak berada di folder ```docs``` melainkan di folder ```asset/readme```
+
