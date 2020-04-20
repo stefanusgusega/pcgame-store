@@ -1,0 +1,66 @@
+# versi python yang dipake
+image: "python:3.7"
+
+# sebelon dijalanin bakal ngapain dlu
+before_script:
+    - python --version
+    - pip install -r requirements.txt
+
+stages:
+    - Static Analysis
+    - Test
+    - Deploy
+
+# Static Analysis
+flake8:
+    stage: Static Analysis
+    script:
+    - flake8 --max-line-length=120 *.py
+
+pylint:
+    stage: Static Analysis
+    # boleh fail gk, sementara gw nyalain soalnya masih bingung
+    allow_failure: true
+    script:
+    - pylint -d C0301 -d R0902 main.py ewallet_backend.py game_backend.py user_backend.py utils.py constant.py
+
+mypy:
+    stage: Static Analysis
+    # boleh fail gk, sementara gw nyalain soalnya masih bingung
+    allow_failure: true
+    script:
+    - pwd
+    - python -m mypy main.py ewallet_backend.py game_backend.py user_backend.py utils.py constant.py
+
+# Test
+pytest:
+    stage: Test
+    # boleh fail gk, sementara gw nyalain soalnya belon ad testcase, mau ngetes ddeploy
+    allow_failure: true
+    script:
+    - pwd
+    - pytest -v
+
+# Deploy
+pyinstaller_windows:
+    stage: Deploy
+    script:
+    - pyinstaller -F -w -n PCGameStore main.py
+    artifacts:
+        name: "$CI_COMMIT_REF_SLUG"
+        paths:
+            - dist/*.exe
+        expire_in: 7 days
+
+pyinstaller_macOS:
+    stage: Deploy
+    tags: 
+    - osx
+    - "macOS"
+    script:
+    - pyinstaller -F -w -n PCGameStore main.py
+    artifacts:
+        name: "$CI_COMMIT_REF_SLUG"
+        paths:
+            - dist/*.exe
+        expire_in: 7 days

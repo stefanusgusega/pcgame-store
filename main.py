@@ -9,15 +9,15 @@ from kivy.uix.button import ButtonBehavior
 from kivy.core.window import Window
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.gridlayout import GridLayout
+from kivy.core.text import LabelBase
+
 from user_backend import UserDatabase
 from ewallet_backend import EwalletDatabase
 from game_backend import GameDatabase
 
-
 from utils import generate_string
-
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE,FORGOT_PAGE,CHANGE_PAGE
-from kivy.core.text import LabelBase
+
 
 LabelBase.register(name="Helvetica",
     fn_regular="asset/font/Helvetica 400.ttf",
@@ -31,10 +31,15 @@ LabelBase.register(name="Circular",
 
 class ImageButton(ButtonBehavior,Image):
     pass
+
+
 class LabelButton(ButtonBehavior,Label):
     pass
+
+
 class FirstWindow(Screen):
     pass
+
 
 class RegisterUserWindow(Screen):
     full_name = ObjectProperty(None)
@@ -88,8 +93,6 @@ class LoginUserWindow(Screen):
         self.password.text = ""
 
 
-
-
 class DownloadWindow(Screen):
 
     def download(self):
@@ -100,9 +103,6 @@ class DownloadWindow(Screen):
 
 
 class MainWindow(Screen):
-    full_name = ObjectProperty(None)
-    created = ObjectProperty(None)
-    email = ObjectProperty(None)
     balance = ObjectProperty(None)
     search = ObjectProperty(None)
     action = ObjectProperty(None)
@@ -118,11 +118,7 @@ class MainWindow(Screen):
     def on_enter(self, *args):
         password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(self.current)
         balanced = db1.get_balance(self.current)
-        self.full_name.text = "Account Name: " + full_name
-        self.email.text = "Email: " + self.current
-        self.created.text = "Created On: " + created
         self.balance.text = "Rp " + balanced 
-
 
 
 class PurchaseWindow(Screen):
@@ -168,6 +164,7 @@ class PurchaseWindow(Screen):
         self.balance.text = ""
         self.price.text = ""
 
+
 class GameDetailsWindow(Screen):
     gambar = ObjectProperty(None)
     nama = ObjectProperty(None)
@@ -209,17 +206,18 @@ class ProfileWindow(Screen):
     full_name = ObjectProperty(None)
     created = ObjectProperty(None)
     email = ObjectProperty(None)
-    # balance = ObjectProperty(None)
+    balance = ObjectProperty(None)
     date_of_birth = ObjectProperty(None)
     nationality = ObjectProperty(None)
     phone_number = ObjectProperty(None)
 
     def on_enter(self, *args):
         password, full_name, date_of_birth, nationality, phone_number, created = db.get_user(MainWindow.current)
+        balance = db1.get_balance(MainWindow.current)
         self.full_name_content.text = full_name
         self.email_content.text = MainWindow.current
         self.created_content.text = created
-        # self.balance.text = balance
+        self.balance_content.text = balance
         self.dob_content.text = date_of_birth
         self.nationality_content.text = nationality
         self.phone_number_content.text = phone_number
@@ -228,8 +226,10 @@ class ProfileWindow(Screen):
 class HelpWindow(Screen):
     pass
 
+
 class TopUpWindow(Screen):
     pass
+
 
 class ForgotPasswordWindow(Screen):
     email = ObjectProperty(None)
@@ -237,23 +237,28 @@ class ForgotPasswordWindow(Screen):
     written_token = ObjectProperty(None)
 
     def change(self):
-        try:
-            db.send_email(self.email.text, self.token)
-            pop = Popup(title='Forgot Password',
-                    content=Label(text='We have send you an email. Check your inbox and enter the input the token above!'),
-                    size_hint=(None,None),size=(600,300),pos_hint={'x': 0.1, 'top':0.3})
-            pop.open()
-        except:
-            pop = Popup(title='Forgot Password',
-                    content=Label(text='We fail to send you email. Re-check your input or contact our staff'),
-                    size_hint=(None,None),size=(600,300),pos_hint={'x': 0.1, 'top':0.3})
+        if db.get_user(self.email.text) != -1:
+            try:
+                db.send_email(self.email.text, self.token)
+                pop = Popup(title='Email sent!',
+                        content=Label(text='We have send you an email.\nCheck your inbox and enter the input the token above!'),
+                        size_hint=(None,None),size=(600,300),pos_hint={'x': 1 / Window.width, 'y': 1 / Window.height })
+                pop.open()
+            except:
+                pop = Popup(title='Email error!',
+                    content=Label(text='We fail to send you email.\nRe-check your input or contact our staff'),
+                    size_hint=(None,None),size=(600,300),pos_hint={'x': 1 / Window.width, 'y': 1 / Window.height })
+                pop.open()
+        else:
+            pop = Popup(title='Email doesn\'t exist',
+                    content=Label(text='You have not have an account at PCGame Store.\nYou should consider signing up!'),
+                    size_hint=(None,None),size=(600,300),pos_hint={'x': 1 / Window.width, 'y': 1 / Window.height })
             pop.open()
 
     def validate(self):
         if(self.token == self.written_token.text):
             program.current = CHANGE_PAGE
             MainWindow.current = self.email.text
-
 
 
 class ChangePasswordWindow(Screen):

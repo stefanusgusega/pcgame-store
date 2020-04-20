@@ -1,0 +1,7 @@
+flake8==3.7.7
+pylint==2.4.4
+mypy==0.770
+pytest==5.4.1
+kivy==1.11.1
+django==3.0.5
+pyinstaller==3.5

@@ -301,9 +301,6 @@
 
 <MainWindow>:
     name: "main_page"
-    full_name: full_name
-    email: email
-    created:created
     search: search
     balance: balance
     action: action
@@ -344,27 +341,6 @@
             on_release:
                 app.root.current = "topup"
                 root.manager.transition.direction = "left"
-        Label:
-            id: full_name
-            pos_hint:{"x": 0.63, "top":0.95}
-            size_hint:0.15, None
-            text: "Account Name: "
-            font_size: (root.width**2 + root.height**2) / 21**4
-
-        Label:
-            id: email
-            pos_hint:{"x": 0.63, "top":.93}
-            size_hint:0.15, None
-            text: "Email: "
-            font_size: (root.width**2 + root.height**2) / 21**4
-
-        Label:
-            id: created
-            pos_hint:{"x": 0.63, "top":0.91}
-            size_hint:0.15, None
-            text: "Created: "
-            font_size: (root.width**2 + root.height**2) / 21**4
-        
         ImageButton:
             pos_hint:{"x":0.9, "top": 0.915}
             source: 'img/logout.png'
@@ -816,7 +792,8 @@
     full_name_content: full_name_content
     email: email
     email_content: email_content
-    # balance: balance
+    balance: balance
+    balance_content: balance_content
     date_of_birth: date_of_birth
     dob_content: dob_content
     nationality: nationality
@@ -878,15 +855,6 @@
             halign: "left"
             pos_hint: {"x":0.48, "top":0.68}
             font_size: (root.width**2 + root.height**2) / 19**4
-        # Label:
-        #     id: balance
-        #     text: "Balance: "
-        #     text_size: self.size
-        #     size_hint: 0.47,None
-        #     halign: "right"
-        #     pos_hint: {"x":0, "top":0.64}
-        #     font_size: (root.width**2 + root.height**2) / 19**4
-        
         Label:
             id: date_of_birth
             font_name: "Circular"
@@ -939,13 +907,30 @@
             pos_hint: {"x":0.48, "top":0.56}
             font_size: (root.width**2 + root.height**2) / 19**4
         Label:
+            id: balance
+            text: "Balance: "
+            font_name: "Circular"
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "right"
+            pos_hint: {"x":0, "top":0.52}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
+            id: balance_content
+            font_name: "Circular"
+            text_size: self.size
+            size_hint: 0.47,None
+            halign: "left"
+            pos_hint: {"x":0.48, "top":0.52}
+            font_size: (root.width**2 + root.height**2) / 19**4
+        Label:
             id : created
             font_name: "Circular"
             text: "Created on: "
             text_size: self.size
             size_hint: 0.47,None
             halign: "right"
-            pos_hint: {"x":0, "top":0.52}
+            pos_hint: {"x":0, "top":0.48}
             font_size: (root.width**2 + root.height**2) / 19**4
         Label:
             id : created_content
@@ -953,13 +938,13 @@
             text_size: self.size
             size_hint: 0.47,None
             halign: "left"
-            pos_hint: {"x":0.48, "top":0.52}
+            pos_hint: {"x":0.48, "top":0.48}
             font_size: (root.width**2 + root.height**2) / 19**4
         Button:
-            pos_hint:{"x":0.47, "top": 0.40}
+            pos_hint:{"x":0.47, "top": 0.10}
             size_hint:0.15,0.05
             text: "Change Password"
-            font_size: 22
+            font_size: 20
             on_release:
                 app.root.current = "change"
                 root.manager.transition.direction = "left"
