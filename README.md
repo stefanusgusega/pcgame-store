@@ -22,15 +22,13 @@ python main.py
 - 1 Autentikasi pengguna
 ![Autentikasi Pengguna](autentikasipengguna.png)
     - 1.1 Login
-    Tidak ada layar
         - 1.1.1 Mengisi form login
-            ![Mengisi Form Login](login.png)
+            - ![Mengisi Form Login](login.png)
         - 1.1.2 Validasi login
             Tidak ada layar
         - 1.1.3 Pesan gagal login
             ![Menampilkan Pesan Gagal Login](gagallogin.png)
     - 1.2 Register
-    Tidak ada layar
         - 1.2.1 Mengisi form registrasi
             ![Mengisi Form Registrasi](register.png)
         - 1.2.2 Validasi registrasi
@@ -43,7 +41,6 @@ python main.py
         ![Validasi Forgot Password](forgotpassword1.png)
 
 - 2 Homepage
-    Tidak ada layar
     - 2.1 Pengguna
         ![Menampilkan Homepage Pengguna](homepage.png)
         - 2.1.1 Menampilkan daftar game
@@ -52,14 +49,14 @@ python main.py
             Hanya diimplementasikan front end nya saja
             ![Menampilkan Filter](filter.png)
         - 2.1.1.2 Search
-        Hanya diimplementasikan front end nya saja
+            - Hanya diimplementasikan front end nya saja
             ![Menampilkan Search](search.png)
         - 2.1.1.3 Menampilkan deskripsi game
             ![Menampilkan Deskripsi Game](deskripsigame.png)
         - 2.1.1.3.1 Membeli game
             ![Membeli Game](validasibeli.png)
         - 2.1.1.3.1.1 Validasi saldo e-wallet
-            Tidak ada layar
+            - Tidak ada layar
         - 2.1.1.3.1.1.1 Menampilkan link download game
             ![Menampilkan link download Game](beligame.png)
             ![Menampilkan link download Game2](beligame2.png)
@@ -76,8 +73,8 @@ python main.py
             ![Pesan Password Berhasil Diganti](forgotpassword1.png)
 
 - 3 Logout
-    Kembali ke modul Autentikasi Pengguna
-    ![Logout](logout.png)
+    - Kembali ke modul Autentikasi Pengguna
+    - ![Logout](logout.png)
 
 ## Daftar Realisasi Tabel Basis Data
 - Tabel Accounts
