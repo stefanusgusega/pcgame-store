@@ -1,5 +1,4 @@
 __pycache__/
 migrations/
 *.vscode
-env.py
 *.DS_Store

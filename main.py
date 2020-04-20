@@ -11,9 +11,9 @@ from kivy.uix.checkbox import CheckBox
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.text import LabelBase
 
-from user_backend import UserDatabase
-from ewallet_backend import EwalletDatabase
-from game_backend import GameDatabase
+from backend.user_backend import UserDatabase
+from backend.ewallet_backend import EwalletDatabase
+from backend.game_backend import GameDatabase
 
 from utils import generate_string
 from constant import LOGIN_PAGE, REGISTER_PAGE, MAIN_PAGE, PURCHASE_PAGE, DOWNLOAD_PAGE,GAME_PAGE, FIRST_PAGE,PROFILE_PAGE,HELP_PAGE,TOPUP_PAGE,FORGOT_PAGE,CHANGE_PAGE
@@ -118,7 +118,7 @@ class MainWindow(Screen):
     def on_enter(self, *args):
         password, full_name, dateofbirth, nationality, phonenumber, created = db.get_user(self.current)
         balanced = db1.get_balance(self.current)
-        self.balance.text = "Rp " + balanced 
+        self.balance.text = "Rp " + str(balanced)
 
 
 class PurchaseWindow(Screen):
@@ -286,6 +286,7 @@ class DownloadWindow(Screen):
         
         pop.open()
 
+
 class WindowManager(ScreenManager):
     pass
 
@@ -315,12 +316,13 @@ class MyMainApp(App):
     def build(self):
         return program
 
+
 kv = Builder.load_file("my.kv")
 program = WindowManager()
-db = UserDatabase("users.txt")
-#games = GameDatabase("pcgame.txt")
-db1 = EwalletDatabase("ewallet.txt")
-db2 = GameDatabase("games.txt")
+
+db = UserDatabase("database/users.txt")
+db1 = EwalletDatabase("database/ewallet.txt")
+db2 = GameDatabase("database/games.txt")
 
 screens = [
     LoginUserWindow(name=LOGIN_PAGE), RegisterUserWindow(name=REGISTER_PAGE), 

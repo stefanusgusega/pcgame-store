@@ -2,7 +2,7 @@ import datetime
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from env import PASSWORD, EMAIL
+from backend.env import PASSWORD, EMAIL
 
 class UserDatabase:
     def __init__(self, filename):
