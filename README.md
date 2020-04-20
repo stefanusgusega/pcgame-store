@@ -65,7 +65,7 @@ python main.py
             ![Gagal Pembelian Game](gagalbeli.png)
             ![Pesan Gagal Saldo Tidak Cukup](gagalbeli1.png)
     - 2.1.2 Menampilkan saldo e-wallet
-        ![Menampilkan Saldo](saldo.png)
+        - ![Menampilkan Saldo](saldo.png)
     - 2.1.4 Menampilkan profil
         ![Menampilkan Profil](profile.png)
         - 2.1.4.1 Ganti password
