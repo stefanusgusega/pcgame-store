@@ -54,17 +54,17 @@ pyinstaller_windows:
         expire_in: 7 days
 
 # buat bikin .app
-pyinstaller_macOS:
-    stage: Deploy
-    # boleh fail gk, sementara gw nyalain soalnya nunggu ad runner di macOS
-    allow_failure: true
-    tags: 
-    - osx
-    - "macOS"
-    script:
-    - pyinstaller -F -w -n PCGameStore main.py
-    artifacts:
-        name: "$CI_COMMIT_REF_SLUG"
-        paths:
-            - dist/*.exe
-        expire_in: 7 days
+# pyinstaller_macOS:
+#     stage: Deploy
+#     # boleh fail gk, sementara gw nyalain soalnya nunggu ad runner di macOS
+#     allow_failure: true
+#     tags: 
+#     - osx
+#     - "macOS"
+#     script:
+#     - pyinstaller -F -w -n PCGameStore main.py
+#     artifacts:
+#         name: "$CI_COMMIT_REF_SLUG"
+#         paths:
+#             - dist/*.exe
+#         expire_in: 7 days
