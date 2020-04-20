@@ -47,12 +47,12 @@ class RegisterUserWindow(Screen):
 
     def register(self):
         if self.full_name.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.email.text.count('!') == 0 and self.password.text != "" and self.nationality.text != '' and self.phonenumber.text != '':
-            db.add_user(self.email.text, self.password.text, self.full_name.text, self.dateofbirth.text, self.nationality.text, self.phonenumber.text, 0)
-            MainWindow.current = self.email.text
-            self.reset()
-            program.current = MAIN_PAGE
-        else:
-            invalidForm()
+            if(db.add_user(self.email.text, self.password.text, self.full_name.text, self.dateofbirth.text, self.nationality.text, self.phonenumber.text)==1):
+                MainWindow.current = self.email.text
+                self.reset()
+                program.current = MAIN_PAGE
+            else:
+                invalidForm()
 
     def login(self):
         self.reset()
@@ -263,8 +263,8 @@ class ChangePasswordWindow(Screen):
     newpassword1 = ObjectProperty(None)
     def change(self):
         #POKOKNYA DISINI VALIDATE DULU YEEEE
-        if(newpassword.text == newpassword1.text and MainWindow.current == self.email.text):
-            db.change_passsword(email, newpassword)
+        if(self.newpassword.text == self.newpassword1.text and MainWindow.current == self.email.text):
+            db.change_password(self.email.text, self.newpassword.text)
             pop = Popup(title='Change Password',
                     content=Label(text='Your password is succesfully changed'),
                     size_hint=(None,None),size=(600,300),pos_hint={'x': 0.35, 'top':0.6})
