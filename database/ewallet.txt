@@ -1,4 +1,4 @@
-jones@gmail.com;8000
+jones@gmail.com;7920
 mike@gmail.com;2500000
 bez@gmail.com;4000000
 inka.riyadi@gmail.com;5000000
