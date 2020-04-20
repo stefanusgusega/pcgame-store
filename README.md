@@ -41,7 +41,7 @@ python main.py
         ![Validasi Forgot Password](forgotpassword1.png)
 
 - 2 Homepage
-    - 2.1 Pengguna
+    - 2.1 Pengguna 
         ![Menampilkan Homepage Pengguna](homepage.png)
         - 2.1.1 Menampilkan daftar game
             ![Menampilkan Daftar Game](game1.png)
@@ -51,20 +51,20 @@ python main.py
         - 2.1.1.2 Search
             - Hanya diimplementasikan front end nya saja
             ![Menampilkan Search](search.png)
-        - 2.1.1.3 Menampilkan deskripsi game
+        - 2.1.1.3 Menampilkan deskripsi game (Inka Anindya Riyadi 13518038)
             ![Menampilkan Deskripsi Game](deskripsigame.png)
-        - 2.1.1.3.1 Membeli game
+        - 2.1.1.3.1 Membeli game (Inka Anindya Riyadi 13518038)
             ![Membeli Game](validasibeli.png)
-        - 2.1.1.3.1.1 Validasi saldo e-wallet
+        - 2.1.1.3.1.1 Validasi saldo e-wallet (Inka Anindya Riyadi 13518038)
             - Tidak ada layar
-        - 2.1.1.3.1.1.1 Menampilkan link download game
+        - 2.1.1.3.1.1.1 Menampilkan link download game (Inka Anindya Riyadi 13518038)
             ![Menampilkan link download Game](beligame.png)
             ![Menampilkan link download Game2](beligame2.png)
             ![Homepage setelah membeli game (saldo berkurang)](homepageafterbuygame.png)
         - 2.1.1.3.1.2 Pesan gagal saldo tidak cukup
             ![Gagal Pembelian Game](gagalbeli.png)
             ![Pesan Gagal Saldo Tidak Cukup](gagalbeli1.png)
-    - 2.1.2 Menampilkan saldo e-wallet
+    - 2.1.2 Menampilkan saldo e-wallet (Inka Anindya Riyadi 13518038)
         - ![Menampilkan Saldo](saldo.png)
     - 2.1.4 Menampilkan profil
         ![Menampilkan Profil](profile.png)
